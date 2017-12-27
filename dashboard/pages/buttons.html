@@ -19,6 +19,13 @@
   #job-spec {
   color: #656565;
   }
+
+  #job-search {
+      margin-right: .5rem;
+  }
+  #new-post {
+      margin-left: 3rem;
+  }
 </style>
 <body>
     <div class=" container-scroller">
@@ -164,8 +171,8 @@
                   <div class="row">
                     <header id="job-list-header" class="d-flex w-100">
                       <h3 class="text-primary mb-4">Job List</h3>
-                      <div class="form-group d-flex ml-auto">
-                        <button class="btn btn-primary" type="submit">New Post</button>
+                      <div class="form-group d-flex">
+                        <button id='new-post' class="btn btn-primary" type="submit">New Post</button>
                       </div>
                       <div class="form-group d-flex ml-auto">
                         <input id="job-search" class="form-control" type="text"/>
@@ -178,13 +185,7 @@
                       </div>
                   </div>
                 </div>
-                <footer class="footer">
-                    <div class="container-fluid clearfix">
-                        <span class="float-right">
-                          <a href="#">Star Admin</a> &copy; 2017
-                      </span>
-                    </div>
-                </footer>
+               
             </div>
         </div>
 

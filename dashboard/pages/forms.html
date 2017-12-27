@@ -14,6 +14,10 @@
 
 
 <style>
+    #chat-area p::first-letter {
+        font-size: 1.2em;
+        color: rgba(145, 224, 255, 0.877);
+    }
   #new-chat-box {
   	margin-right: 2vw;
   }
@@ -245,20 +249,20 @@
 					return returnArr;
 				};
 
-				// grabbing shapshot from firebase/chatbox
+				// grabbing shapshot from firebase/chatbox/posts
 				
                 database.ref('/chatBox/posts').on('value', function(snapshot) {
-
+            
 					chatBoxArray = snapshotToArray(snapshot);
 					console.log(chatBoxArray)
 					postNumber = snapshot.postNumber;
                     $('#chat-area').empty();
 					// running through the array of posts, storing each locally, 
 					// then appending it to the dom
-					for (var i = 0; i < chatBoxArray.length; i ++) {
+					for (var i = chatBoxArray.length - 1; i > chatBoxArray.length - 10; i --){
 						var line = chatBoxArray[i];
 
-						$('#chat-area').append('<p> - ' + line + '</p>')
+						$('#chat-area').prepend('<p> - ' + line + '</p>')
 						
 						
 					};
@@ -273,7 +277,7 @@
                     
 					var postText = $('#new-chat-box').val();
 					
-					// need to add new post to firebase
+					
 					database.ref('/chatBox/posts').push(postText)
                     $('#new-chat-box').val("");
 
