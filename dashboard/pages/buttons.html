@@ -11,7 +11,22 @@
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="shortcut icon" href="../images/favicon.png" />
 </head>
+<style>
+ #job-title {
+  border-bottom: 1px solid grey;
+  display: inline-block;
+  }
+  #job-spec {
+  color: #656565;
+  }
 
+  #job-search {
+      margin-right: .5rem;
+  }
+  #new-post {
+      margin-left: 3rem;
+  }
+</style>
 <body>
     <div class=" container-scroller">
         <!--Navbar-->
@@ -24,9 +39,6 @@
                 <button class="navbar-toggler navbar-toggler hidden-md-down align-self-center mr-3" type="button" data-toggle="minimize">
                   <span class="navbar-toggler-icon"></span>
                 </button>
-                <form class="form-inline mt-2 mt-md-0 hidden-md-down">
-                    <input class="form-control mr-sm-2 search" type="text" placeholder="Search">
-                </form>
                 <ul class="navbar-nav ml-lg-auto d-flex align-items-center flex-row">
                     <li class="nav-item">
                         <a class="nav-link profile-pic" href="#"><img class="rounded-circle" src="../images/face.jpg" alt=""></a>
@@ -155,58 +167,25 @@
 
                 
                 <div class="content-wrapper">
-                    <h3 class="text-primary mb-4">Buttons</h3>
-                    <div class="row mb-4">
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div class="card-block">
-                                    <h5 class="card-title mb-4">Button with filled color</h5>
-                                    <button type="button" class="btn btn-primary">Primary</button>
-                                    <button type="button" class="btn btn-secondary">Secondary</button>
-                                    <button type="button" class="btn btn-success">Success</button>
-                                    <button type="button" class="btn btn-info">Info</button>
-                                    <button type="button" class="btn btn-warning">Warning</button>
-                                    <button type="button" class="btn btn-danger">Danger</button>
-                                    <button type="button" class="btn btn-link">Link</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mb-4">
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div class="card-block">
-                                    <h5 class="card-title mb-4">Button with outline</h5>
-                                    <button type="button" class="btn btn-outline-primary">Primary</button>
-                                    <button type="button" class="btn btn-outline-secondary">Secondary</button>
-                                    <button type="button" class="btn btn-outline-success">Success</button>
-                                    <button type="button" class="btn btn-outline-info">Info</button>
-                                    <button type="button" class="btn btn-outline-warning">Warning</button>
-                                    <button type="button" class="btn btn-outline-danger">Danger</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mb-4">
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div class="card-block">
-                                    <h5 class="card-title mb-4">Button sizes</h5>
-                                    <button type="button" class="btn btn-primary btn-lg">Large button</button>
-                                    <button type="button" class="btn btn-primary">Medium button</button>
-                                    <button type="button" class="btn btn-primary btn-sm">Small button</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                  <div class="container">
+                  <div class="row">
+                    <header id="job-list-header" class="d-flex w-100">
+                      <h3 class="text-primary mb-4">Job List</h3>
+                      <div class="form-group d-flex">
+                        <button id='new-post' class="btn btn-primary" type="submit">New Post</button>
+                      </div>
+                      <div class="form-group d-flex ml-auto">
+                        <input id="job-search" class="form-control" type="text"/>
+                        <button class="btn btn-primary" type="submit">Search</button>
+                      </div>
+                    </header>
+                  </div>
+                  <div class="row mb-4">
+                      <div id="job-list-container" class="bg-white col-lg-12">
+                      </div>
+                  </div>
                 </div>
-                <footer class="footer">
-                    <div class="container-fluid clearfix">
-                        <span class="float-right">
-                          <a href="#">Star Admin</a> &copy; 2017
-                      </span>
-                    </div>
-                </footer>
+               
             </div>
         </div>
 
@@ -220,6 +199,50 @@
     <script src="../js/off-canvas.js"></script>
     <script src="../js/hoverable-collapse.js"></script>
     <script src="../js/misc.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script>
+			// Initializing Firebase
+			var config = {
+			apiKey: "AIzaSyCRUos4srVsw2Gw6_ghM2YTUSXdm-L6kEo",
+			authDomain: "robal-f2619.firebaseapp.com",
+			databaseURL: "https://robal-f2619.firebaseio.com",
+			projectId: "robal-f2619",
+			storageBucket: "robal-f2619.appspot.com",
+			messagingSenderId: "1011207778959"
+			};
+			firebase.initializeApp(config);
+
+			var database = firebase.database();
+			var jobPostArray = [];
+			// Function turning snapshop into an Array
+			function snapshotToArray(snapshot) {
+					var returnArr = [];
+
+					snapshot.forEach(function(childSnapshot) {
+					var item = childSnapshot.val();
+					item.key = childSnapshot.key;
+					returnArr.push(item);
+    		});
+				return returnArr;
+			};
+
+			// Gathering data of job posts from Firebase
+			database.ref("/jobPost").on('value', function(snapshot) {
+				jobPostArray = snapshotToArray(snapshot);
+				console.log(jobPostArray)
+				// running through the array of posts, storing each key/value locally, 
+				// then appending them to the dom
+				for (var i = 0; i < jobPostArray.length - 1; i ++) {
+					var name = jobPostArray[i].name;
+					var email = jobPostArray[i].email;
+					var hours = jobPostArray[i].hours;
+					var loc = jobPostArray[i].loc;
+					var description = jobPostArray[i].description;
+					var title = jobPostArray[i].title;
+					$('#job-list-container').append('<div id="job-list-item-1" class="mt-3"><div class="row"><div class="col-md-12"><h3 id="job-title">' + title + '</h3></div></div><div class="ml-2 row"><div class="col-md-12"><p id="job-spec">Employeer is ' + name + ' - ' + email + ' <br>'+ hours +' hours at ' + loc + '</p><p id="job-description">'+ description + '</p></div></div>');
+				};
+			});
+</script>
 </body>
 
 </html>
