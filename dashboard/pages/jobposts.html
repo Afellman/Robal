@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Star Admin</title>
     <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="../node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css" />
+		<link rel="stylesheet" href="../node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css" />
+		<link rel="stylesheet" href=" https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.bundle.min.js"/>
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="shortcut icon" href="../images/favicon.png" />
 </head>
@@ -26,6 +27,9 @@
   #new-post {
       margin-left: 3rem;
   }
+	#map {
+				height: 400px;
+			}
 </style>
 <body>
     <div class=" container-scroller">
@@ -54,115 +58,115 @@
         </nav>
         <!--End navbar-->
         <div class="container-fluid">
-            <div class="row row-offcanvas row-offcanvas-right">
-                <nav class="bg-white sidebar sidebar-fixed sidebar-offcanvas" id="sidebar">
-                <div class="user-info">
-                    <img src="../images/face.jpg" alt="">
-                    <p class="name">Richard V.Welsh</p>
-                    <p class="designation">Manager</p>
-                    <span class="online"></span>
-                </div>
-                    <ul class="nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="../index.html">
-                                <!-- <i class="fa fa-dashboard"></i> -->
-                                <img src="../images/icons/1.png" alt="">
-                                <span class="menu-title">Dashboard</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../pages/widgets.html">
-                                <img src="../images/icons/2.png" alt="">
-                                <span class="menu-title">Widgets</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../pages/forms.html">
-                                <!-- <i class="fa fa-wpforms"></i> -->
-                                <img src="../images/icons/3.png" alt="">
-                                <span class="menu-title">Forms</span>
-                            </a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="../pages/buttons.html">
-                                <!-- <i class="fa fa-calculator"></i> -->
-                                <img src="../images/icons/4.png" alt="">
-                                <span class="menu-title">Buttons</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../pages/tables.html">
-                                <!-- <i class="fa fa-table"></i> -->
-                                <img src="../images/icons/5.png" alt="">
-                                <span class="menu-title">Tables</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../pages/charts.html">
-                                <!-- <i class="fa fa-bar-chart"></i> -->
-                                <img src="../images/icons/6.png" alt="">
-                                <span class="menu-title">Charts</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../pages/icons.html">
-                                <!-- <i class="fa fa-font"></i> -->
-                                <img src="../images/icons/7.png" alt="">
-                                <span class="menu-title">Icons</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../pages/typography.html">
-                                <!-- <i class="fa fa-bold"></i> -->
-                                <img src="../images/icons/8.png" alt="">
-                                <span class="menu-title">Typography</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                <!-- <i class="fa fa-address-book"></i> -->
-                                <img src="../images/icons/9.png" alt="">
-                                <span class="menu-title">Sample Pages<i class="fa fa-sort-down"></i></span>
-                            </a>
-                            <div class="collapse" id="collapseExample">
-                                <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="../samples/blank_page.html">
-                                      Blank Page
-                                    </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="../samples/register.html">
-                                      Register
-                                    </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="../samples/login.html">
-                                      Login
-                                    </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="../samples/not-found.html">
-                                      404
-                                    </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="../samples/error.html">
-                                      500
-                                    </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <!-- <i class="fa fa-bold"></i> -->
-                                <img src="../images/icons/10.png" alt="">
-                                <span class="menu-title">Settings</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+                <div class="row row-offcanvas row-offcanvas-right">
+                    <nav class="bg-white sidebar sidebar-fixed sidebar-offcanvas" id="sidebar">
+                    <div class="user-info">
+                        <img src="../images/face.jpg" alt="">
+                        <p class="name">Javascript for User Name</p>
+                        <p class="designation">Javascript for Job Title</p>
+                        <span class="online"></span>
+                    </div>
+                        <ul class="nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">
+                                    <!-- <i class="fa fa-dashboard"></i> -->
+                                    <img src="../images/icons/1.png" alt="">
+                                    <span class="menu-title">Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./schedule.html">
+                                    <img src="../images/icons/2.png" alt="">
+                                    <span class="menu-title">Schedule</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./forms.html">
+                                    <!-- <i class="fa fa-wpforms"></i> -->
+                                    <img src="../images/icons/3.png" alt="">
+                                    <span class="menu-title">Rates</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./maps.html">
+                                    <!-- <i class="fa fa-calculator"></i> -->
+                                    <img src="../images/icons/4.png" alt="">
+                                    <span class="menu-title">Maps</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./jobposts.html">
+                                    <!-- <i class="fa fa-table"></i> -->
+                                    <img src="../images/icons/5.png" alt="">
+                                    <span class="menu-title">Job Posts</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./chat.html">
+                                    <!-- <i class="fa fa-bar-chart"></i> -->
+                                    <img src="../images/icons/6.png" alt="">
+                                    <span class="menu-title">Chat Forum</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./posts.html">
+                                    <!-- <i class="fa fa-font"></i> -->
+                                    <img src="../images/icons/7.png" alt="">
+                                    <span class="menu-title">Create Job</span>
+                                </a>
+                            </li>
+                            <!--<li class="nav-item">
+                                <a class="nav-link" href="pages/typography.html">
+                                    <!-- <i class="fa fa-bold"></i> -->
+                                    <!--<img src="images/icons/8.png" alt="">
+                                    <span class="menu-title">Typography</span>
+                                </a>
+                            </li>-->
+                            <!--<li class="nav-item">
+                                <a class="nav-link" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                    <!-- <i class="fa fa-address-book"></i> -->
+                                    <!--<img src="images/icons/9.png" alt="">
+                                    <span class="menu-title">Sample Pages<i class="fa fa-sort-down"></i></span>
+                                </a>
+                                <div class="collapse" id="collapseExample">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="samples/blank_page.html">
+                                          Blank Page
+                                        </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="samples/register.html">
+                                          Register
+                                        </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="samples/login.html">
+                                          Login
+                                        </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="samples/not-found.html">
+                                          404
+                                        </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="samples/error.html">
+                                          500
+                                        </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>-->
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <!-- <i class="fa fa-bold"></i> -->
+                                    <img src="../images/icons/10.png" alt="">
+                                    <span class="menu-title">Settings</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
                 <!-- SIDEBAR ENDS -->
 
                 
@@ -190,7 +194,26 @@
         </div>
 
     </div>
-
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+				<div class="modal-content">
+						<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+						</button>
+						</div>
+						<div class="modal-body">
+										<div id="map">
+												</div>
+						</div>
+						<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						
+						</div>
+				</div>
+				</div>
+		</div>
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script src="../node_modules/tether/dist/js/tether.min.js"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -212,17 +235,19 @@
 			};
 			firebase.initializeApp(config);
 
+            // Initializing variables
+            var myLatLng;
 			var database = firebase.database();
 			var jobPostArray = [];
+
 			// Function turning snapshop into an Array
 			function snapshotToArray(snapshot) {
-					var returnArr = [];
-
-					snapshot.forEach(function(childSnapshot) {
+				var returnArr = [];
+				snapshot.forEach(function(childSnapshot) {
 					var item = childSnapshot.val();
 					item.key = childSnapshot.key;
 					returnArr.push(item);
-    		});
+					});
 				return returnArr;
 			};
 
@@ -239,10 +264,43 @@
 					var loc = jobPostArray[i].loc.address;
 					var description = jobPostArray[i].description;
 					var title = jobPostArray[i].title;
-					$('#job-list-container').append('<div id="job-list-item-1" class="mt-3"><div class="row"><div class="col-md-12"><h3 id="job-title">' + title + '</h3></div></div><div class="ml-2 row"><div class="col-md-12"><p id="job-spec">Employeer is ' + name + ' - ' + email + ' <br>'+ hours +' hours at ' + loc + '</p><p id="job-description">'+ description + '</p></div></div>');
+					$('#job-list-container').append('<div id="job-list-item-1" class="mt-3"><div class="row"><div class="col-md-12"><h3 id="job-title">' + title + '</h3></div></div><div class="ml-2 row"><div class="col-md-12"><p id="job-spec">Employeer is ' + name + ' - ' + email + ' <br>'+ hours +' hours at ' + loc + '</p><button type="button" class="btn btn-primary map-btn" id="btn' + i + '" data-toggle="modal" data-target="#exampleModal">Map</button><p id="job-description">'+ description + '</p></div></div>');
 				};
 			});
+            
+                // Need to add function to get firebase location based on 
+                // which job post the user clicks on
+				database.ref().on('value', function(snapshot) {
+
+					
+
+				});
+            // Initialize Google Maps API
+						// NEED TO FIX MAPS DISPLAY AND ADD PROPER COORDS FROM FIREBASE
+				function initMap() {
+					var myLatLng = {lat: 40.495157, lng: -74.446850};
+
+					// Create a map object and specify the DOM element for display.
+					var map = new google.maps.Map(document.getElementById('map'), {
+						center: myLatLng,
+						zoom: 13
+					});
+
+					// Create a marker and set its position.
+					var marker = new google.maps.Marker({
+						map: map,
+						position: myLatLng,
+						title: 'Hello World!'
+					});
+                    
+					$("#map").on("shown.bs.modal", function(e) {
+							google.maps.event.trigger(map, "resize");
+							return map.setCenter(myLatLng);
+					});
+				};
 </script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzTLxC73DXyLzgblZUBKMdM4_LJgnKmKY&callback=initMap"
+	async defer></script>
 </body>
 
 </html>
