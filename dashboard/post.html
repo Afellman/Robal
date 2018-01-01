@@ -1,6 +1,10 @@
 <!DOCTYPE html>
-<!-- saved from url=(0068)file:///C:/Users/alexi/Desktop/Robal%20Practice/dashboard/index.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en">
+<head>
+
+
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <!-- Required meta tags -->
       
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,6 +13,12 @@
       <link rel="stylesheet" href="./index_files/perfect-scrollbar.min.css">
       <link rel="stylesheet" href="./index_files/style.css">
       <link rel="shortcut icon" href="file:///C:/Users/alexi/Desktop/Robal%20Practice/dashboard/images/favicon.png">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Vollkorn+SC" rel="stylesheet">
+
   <style>
 
 
@@ -25,13 +35,10 @@
 
 }
 
-.brand-logo {
-    float: left;
-}
 
 
 body {
-    font-family: 'Pathway Gothic One', sans-serif; 
+    font-family: 'Vollkorn SC', serif;
     font-size: 22px;
     background-image: url("../images/cwork.jpg"); 
     background-size: 100%;
@@ -81,16 +88,17 @@ body {
     </div>
   
   </div>
+<!-- Entry Form -->
 
 <form>
    <div class="row">
     <div class="col-md-6 mb-3">
-      <label for="validationServer01">First Name</label>
-      <input type="text" class="form-control is-valid" id="validationServer01" placeholder="Ricky" value="" required="">
+      <label for="name-input">First Name</label>
+      <input type="text" class="form-control is-valid" id="name-input" placeholder="Ricky" value="" required="">
     </div>
     <div class="col-md-6 mb-3">
-      <label for="validationServer02">Last Name</label>
-      <input type="text" class="form-control is-valid" id="validationServer02" placeholder="Bobby" value="" required="">
+      <label for="last-name-input">Last Name</label>
+      <input type="text" class="form-control is-valid" id="last-name-input" placeholder="Bobby" value="" required="">
  </div>
 </div>
 
@@ -98,12 +106,12 @@ body {
 
    <div class="row">
     <div class="col-md-6 mb-3">
-      <label for="validationServer03">Email</label>
-      <input type="text" class="form-control is-valid" id="validationServer03" placeholder="developer@gmail.com" value="" required="">
+      <label for="email-input">Email</label>
+      <input type="text" class="form-control is-valid" id="email-input" placeholder="developer@gmail.com" value="" required="">
     </div>
     <div class="col-md-6 mb-3">
-      <label for="validationServer04">Location</label>
-      <input type="text" class="form-control is-valid" id="validationServer04" placeholder="Long Branch, NJ" value="" required="">
+      <label for="location-input">Location</label>
+      <input type="text" class="form-control is-valid" id="location-input" placeholder="Long Branch, NJ" value="" required="">
  </div>
 </div>
 
@@ -111,12 +119,12 @@ body {
 
  <div class="row">
     <div class="col-md-6 mb-3">
-      <label for="validationServer05">Hours Needed</label>
-      <input type="text" class="form-control is-valid" id="validationServer05" placeholder="Two Hours" value="" required="">
+      <label for="hours-input">Hours Needed</label>
+      <input type="text" class="form-control is-valid" id="hours-input" placeholder="Two Hours" value="" required="">
     </div>
     <div class="col-md-6 mb-3">
-      <label for="validationServer06">Job Title</label>
-      <input type="text" class="form-control is-valid" id="validationServer06" placeholder="Painter" value="" required="">
+      <label for="job-input">Job Title</label>
+      <input type="text" class="form-control is-valid" id="job-input" placeholder="Painter" value="" required="">
  </div>
 </div>
 
@@ -124,14 +132,15 @@ body {
 
 <div class="row">
     <div class="col-md-6 mb-3">
-      <label for="validationServer07">Work needed description</label>
-      <input type="text" class="form-control is-valid" id="validationServer07" value="" required="" style="width:540px;height:250px">
+      <label for="work-needed-input">Work needed description</label>
+      <input type="text" class="form-control is-valid" id="work-needed-input" value="" required="" style="width:540px;height:250px">
       <br><br>
-      <input type="submit" value="Submit" style="background-color:#708090;width:80px;height:40px;color:white">
-      
+       <button class="btn btn-primary" id="add-form-btn" type="submit" style="background-color:#708090;width:80px;height:40px;color:white">Submit</button>
 
+      
     </div>
-</div></form>
+</div>
+</form>
 
   </div>
 </div>
@@ -148,6 +157,70 @@ body {
   <footer>
     <p> </p>
   </footer>
+
+  <script>
+
+  var config = {
+          apiKey: "AIzaSyCRUos4srVsw2Gw6_ghM2YTUSXdm-L6kEo",
+          authDomain: "robal-f2619.firebaseapp.com",
+          databaseURL: "https://robal-f2619.firebaseio.com",
+          projectId: "robal-f2619",
+          storageBucket: "robal-f2619.appspot.com",
+          messagingSenderId: "1011207778959"
+  };
+  firebase.initializeApp(config);
+        
+        // Storing Firebase in database
+  var database = firebase.database();
+
+   $("#add-form-btn").on("click", function(event) {
+   event.preventDefault();
+    
+    var fName = $("#name-input").val().trim();
+    var lName = $("#last-name-input").val().trim();
+    var email = $("#email-input").val().trim();
+    var location = $("#location-input").val().trim();
+    var hours = $("#hours-input").val().trim();
+    var job = $("#job-input").val().trim();
+    var wNeed = $("#work-needed-input").val().trim();
+
+
+    console.log(fName);
+    console.log(lName);
+    console.log(email);
+    console.log(location);
+    console.log(hours);
+    console.log(job);
+    console.log(wNeed);
+
+
+    var newJobPost = {
+
+      name: fName,
+      lastname: lName,
+      eaddress: email,
+      area: location,
+      hrs: hours,
+      work: job,
+      need: wNeed,
+
+    };
+
+    database.ref().push(newJobPost);
+
+    $("#name-input").val("");
+    $("#last-name-input").val("");
+    $("#email-input").val("");
+    $("#location-input").val("");
+    $("#hours-input").val("");
+    $("#job-input").val("");
+    $("#work-needed-input").val("");
+
+    });
+
+
+
+  </script>
 </div>
 
 
