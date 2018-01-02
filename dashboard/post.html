@@ -12,7 +12,7 @@
       <link rel="stylesheet" href="./index_files/font-awesome.min.css">
       <link rel="stylesheet" href="./index_files/perfect-scrollbar.min.css">
       <link rel="stylesheet" href="./index_files/style.css">
-      <link rel="shortcut icon" href="file:///C:/Users/alexi/Desktop/Robal%20Practice/dashboard/images/favicon.png">
+      <link rel="shortcut icon" href="dashboard/images/favicon.png">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -23,7 +23,7 @@
 
 
 .bg-primary-gradient {
-    background-color: red;
+    background-color:
 }
   .navbar-brand {
     font-size: 30px;
@@ -60,12 +60,12 @@ body {
                 </form>
                 <ul class="navbar-nav ml-lg-auto d-flex align-items-center flex-row">
                     <li class="nav-item">
-                        <a class="nav-link profile-pic" href="file:///C:/Users/alexi/Desktop/Robal%20Practice/dashboard/index.html#"><img class="rounded-circle" src="./index_files/face.jpg" alt=""></a>
+                        <a class="nav-link profile-pic" href="dashboard/index.html#"><img class="rounded-circle" src="./index_files/face.jpg" alt=""></a>
                     </li>
-                    <li><a href="file:///C:/Users/alexi/Desktop/Robal%20Practice/dashboard/home.html">Home<span class="sr-only"></span></a></li>
-          <li><a href="file:///C:/Users/alexi/Desktop/Robal%20Practice/dashboard/dashboard.html">Dashboard</a></li>
-          <li><a href="file:///C:/Users/alexi/Desktop/Robal%20Practice/dashboard/posting.html">Job Post Form</a></li>
-          <li><a href="file:///C:/Users/alexi/Desktop/Robal%20Practice/dashboard/listings.html">Job listings</a></li>
+                    <li><a href="././">Home<span class="sr-only"></span></a></li>
+          <li><a href="index.html">Dashboard</a></li>
+          <li><a href="">Job Post Form</a></li>
+          <li><a href="pages/jobposts.html">Job listings</a></li>
            </ul>
                   
                 <button class="navbar-toggler navbar-toggler-right hidden-lg-up align-self-center" type="button" data-toggle="offcanvas">
@@ -206,7 +206,7 @@ body {
 
     };
 
-    database.ref().push(newJobPost);
+    database.ref('/jobPosts').push(newJobPost);
 
     $("#name-input").val("");
     $("#last-name-input").val("");
