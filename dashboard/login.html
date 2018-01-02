@@ -8,7 +8,7 @@
       <!-- Required meta tags -->
       
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <title>Robal.com</title>
+      <title>Login To Robal</title>
       <link rel="stylesheet" href="./index_files/font-awesome.min.css">
       <link rel="stylesheet" href="./index_files/perfect-scrollbar.min.css">
       <link rel="stylesheet" href="./index_files/style.css">
@@ -41,7 +41,7 @@ body {
     font-family: 'Vollkorn SC', serif;
     font-size: 22px;
     background-image: url("../images/cwork.jpg"); 
-    background-size: 100%;
+    background-size: 30%;
 }
       
 
@@ -83,7 +83,7 @@ body {
 <div class="container">
     <div class="row">
         <div class="col-md-9">
-        <h1>Job Post Entry Form</h1>
+        <h1>Login</h1>
         <hr>
     </div>
   
@@ -91,50 +91,28 @@ body {
 <!-- Entry Form -->
 
 <form>
-   <div class="row">
-    <div class="col-md-6 mb-3">
-      <label for="name-input">First Name</label>
-      <input type="text" class="form-control is-valid" id="name-input" placeholder="Ricky" value="" required="">
-    </div>
-    <div class="col-md-6 mb-3">
-      <label for="last-name-input">Last Name</label>
-      <input type="text" class="form-control is-valid" id="last-name-input" placeholder="Bobby" value="" required="">
- </div>
-</div>
-
-<br>
 
    <div class="row">
     <div class="col-md-6 mb-3">
       <label for="email-input">Email</label>
       <input type="text" class="form-control is-valid" id="email-input" placeholder="developer@gmail.com" value="" required="">
     </div>
-    <div class="col-md-6 mb-3">
-      <label for="location-input">Location</label>
-      <input type="text" class="form-control is-valid" id="location-input" placeholder="Long Branch, NJ" value="" required="">
- </div>
+
 </div>
 
 <br>
 
  <div class="row">
     <div class="col-md-6 mb-3">
-      <label for="hours-input">Hours Needed</label>
-      <input type="text" class="form-control is-valid" id="hours-input" placeholder="Two Hours" value="" required="">
+      <label for="hours-input">Password</label>
+      <input type="text" class="form-control is-valid" id="password-input" placeholder="Two Hours" value="" required="">
     </div>
-    <div class="col-md-6 mb-3">
-      <label for="job-input">Job Title</label>
-      <input type="text" class="form-control is-valid" id="job-input" placeholder="Painter" value="" required="">
- </div>
 </div>
 
 <br>
 
 <div class="row">
     <div class="col-md-6 mb-3">
-      <label for="work-needed-input">Work needed description</label>
-      <textarea type="text" class="form-control is-valid" id="work-needed-input" value="" required="" style="width:540px;height:250px"></textarea>
-      <br><br>
        <button class="btn btn-primary" id="add-form-btn" type="submit" style="background-color:#708090;width:80px;height:40px;color:white">Submit</button>
 
       
@@ -176,45 +154,29 @@ body {
    $("#add-form-btn").on("click", function(event) {
    event.preventDefault();
     
-    var fName = $("#name-input").val().trim();
-    var lName = $("#last-name-input").val().trim();
+    // var fName = $("#name-input").val().trim();
+    // var lName = $("#last-name-input").val().trim();
     var email = $("#email-input").val().trim();
-    var location = $("#location-input").val().trim();
-    var hours = $("#hours-input").val().trim();
-    var job = $("#job-input").val().trim();
-    var wNeed = $("#work-needed-input").val().trim();
+    var password = $("#password-input").val().trim();
 
 
-    console.log(fName);
-    console.log(lName);
     console.log(email);
-    console.log(location);
-    console.log(hours);
-    console.log(job);
-    console.log(wNeed);
+    console.log(password);
 
 
-    var newJobPost = {
+    var loginInfo = {
 
-      name: fName,
-      lastname: lName,
+
       eaddress: email,
-      area: location,
-      hrs: hours,
-      work: job,
-      need: wNeed,
+      pword: password,
 
     };
 
-    database.ref('/jobPost').push(newJobPost);
+    database.ref('/jobPosts').push(loginInfo);
 
-    $("#name-input").val("");
-    $("#last-name-input").val("");
+
     $("#email-input").val("");
-    $("#location-input").val("");
-    $("#hours-input").val("");
-    $("#job-input").val("");
-    $("#work-needed-input").val("");
+    $("#password-input").val("");
 
     });
 
