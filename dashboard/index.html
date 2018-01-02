@@ -9,38 +9,25 @@
       <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" />
       <link rel="stylesheet" href="node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css" />
       <link rel="stylesheet" href="css/style.css"/>
+      <!-- Jamie's CSS -->
+      <link rel="stylesheet" href="css/jamieStyles.css"/>
       <link rel="shortcut icon" href="images/favicon.png"/>
+      <!-- JQuery -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
+    <script>
+       $(document).ready(function(){
+            $('header').load('header.html');
+            $('footer').load('footer.html');
+       });
+    </script>
   <body>
+
       <div class=" container-scroller">
-        <!--Navbar-->
-        <nav class="navbar bg-primary-gradient col-lg-12 col-12 p-0 fixed-top navbar-inverse d-flex flex-row">
-            <div class="bg-white text-center navbar-brand-wrapper">
-                <a class="navbar-brand brand-logo" href="#"><img src="images/logo_star_black.png" /></a>
-                <a class="navbar-brand brand-logo-mini" href="#"><img src="images/logo_star_mini.jpg" alt=""></a>
-            </div>
-            <div class="navbar-menu-wrapper d-flex align-items-center">
-                <button class="navbar-toggler navbar-toggler hidden-md-down align-self-center mr-3" type="button" data-toggle="minimize">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <form class="form-inline mt-2 mt-md-0 hidden-md-down">
-                    <input class="form-control mr-sm-2 search" type="text" placeholder="Search">
-                </form>
-                <ul class="navbar-nav ml-lg-auto d-flex align-items-center flex-row">
-                    <li class="nav-item">
-                        <a class="nav-link profile-pic" href="#"><img class="rounded-circle" src="images/face.jpg" alt=""></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-th"></i></a>
-                    </li>
-                </ul>
-                <button class="navbar-toggler navbar-toggler-right hidden-lg-up align-self-center" type="button" data-toggle="offcanvas">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-        </nav>
-        <!--End navbar-->
-        <div class="container-fluid">
+        <header>
+            
+        </header>        
+        <div class="container-fluid marginTop">
             <div class="row row-offcanvas row-offcanvas-right">
                 <nav class="bg-white sidebar sidebar-fixed sidebar-offcanvas" id="sidebar">
                 <div class="user-info">
@@ -98,17 +85,17 @@
                                 <span class="menu-title">Create Job</span>
                             </a>
                         </li>
-                        <!--<li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link" href="pages/typography.html">
-                                <!-- <i class="fa fa-bold"></i> -->
-                                <!--<img src="images/icons/8.png" alt="">
+                                <i class="fa fa-bold"></i>
+                                img src="images/icons/8.png" alt="">
                                 <span class="menu-title">Typography</span>
                             </a>
-                        </li>-->
-                        <!--<li class="nav-item">
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                <!-- <i class="fa fa-address-book"></i> -->
-                                <!--<img src="images/icons/9.png" alt="">
+                                <i class="fa fa-address-book"></i>
+                                <img src="images/icons/9.png" alt="">
                                 <span class="menu-title">Sample Pages<i class="fa fa-sort-down"></i></span>
                             </a>
                             <div class="collapse" id="collapseExample">
@@ -205,25 +192,25 @@
                         </div>
                     </div>
                     <div class="row">
-                        <!--<div class="col-lg-6  mb-4">
+                        <div class="col-lg-6  mb-4">
                             <div class="card">
                                 <div class="card-block">
                                     <h5 class="card-title mb-4">Sales</h5>
                                     <canvas id="lineChart" style="height:250px"></canvas>
                                 </div>
                             </div>
-                        </div>-->
-                        <!--<div class="col-lg-6  mb-4">
+                        </div>
+                        <div class="col-lg-6  mb-4">
                             <div class="card">
                                 <div class="card-block">
                                     <h5 class="card-title mb-4">Customer Satisfaction</h5>
                                     <canvas id="doughnutChart" style="height:250px"></canvas>
                                 </div>
                             </div>
-                        </div>-->
+                        </div>
                     </div>
                     <div class="row">
-                        <!--<div class="col-lg-6 mb-4">
+                        <div class="col-lg-6 mb-4">
                             <div class="card">
                                 <div class="card-block">
                                     <h5 class="card-title mb-4">Payments</h5>
@@ -277,34 +264,27 @@
                                 </div>
                             </div>
                         </div>-->
-                        <!--<div class="col-lg-6 mb-4">
+                        <div class="col-lg-6 mb-4">
                             <div class="card">
                                 <div class="card-block">
                                     <h5 class="card-title"></h5>
                                     <div id="map" style="min-height:415px;"></div>
                                 </div>
                             </div>
-                        </div>-->
+                        </div>
                     </div>
                 </div>
-                <footer class="footer">
-                    <div class="container-fluid clearfix">
-                      <span class="float-right">
-                          <a href="#">Star Admin</a> &copy; 2017
-                      </span>
-                    </div>
-                </footer>
+                <footer class="footer"></footer>
             </div>
         </div>
 
-      </div>
-
-      <script src="node_modules/jquery/dist/jquery.min.js"></script>
+      </div><!--End Container -->
+ <script src="node_modules/jquery/dist/jquery.min.js"></script>
       <script src="node_modules/tether/dist/js/tether.min.js"></script>
       <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
       <script src="node_modules/chart.js/dist/Chart.min.js"></script>
       <script src="node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js"></script>
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5NXz9eVnyJOA81wimI8WYE08kW_JMe8g&callback=initMap" async defer></script>
+     
       <script src="js/off-canvas.js"></script>
       <script src="js/hoverable-collapse.js"></script>
       <script src="js/misc.js"></script>
@@ -313,3 +293,4 @@
   </body>
 
 </html>
+     
