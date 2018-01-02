@@ -2,207 +2,166 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Star Admin</title>
-    <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css" />
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Star Admin</title>
+  <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css" />
 	<link rel="stylesheet" href="../node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css" />
 	<link rel="stylesheet" href=" https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.bundle.min.js"/>
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="shortcut icon" href="../images/favicon.png" />
-    <link href="https://fonts.googleapis.com/css?family=Vollkorn+SC" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="shortcut icon" href="../images/favicon.png" />
+  <link href="https://fonts.googleapis.com/css?family=Vollkorn+SC" rel="stylesheet">
 </head>
 <style>
 
-    * {
-        font-family: 'Vollkorn SC', serif;
-        
-    }
-    #job-title {
+  * {
+    font-family: 'Vollkorn SC', serif;
+  }
+  
+  #job-title {
     border-bottom: 1px solid grey;
     display: inline-block;
-    }
-    #job-spec {
-    color: #656565;
-    }
-
-    #job-search {
-        margin-right: .5rem;
-    }
-    #new-post {
-        margin-left: 3rem;
   }
-    #map {
-				height: 400px;
-    }
-    
-    .job-line {
-        margin: 10px 30px 30px 30px;
-    }
+
+  #job-spec {
+    color: #656565;
+  }
+
+  #job-search {
+    margin-right: .5rem;
+  }
+
+  #new-post {
+    margin-left: 3rem;
+  }
+
+  #map {
+    height: 400px;
+  }
+
+  .job-line {
+    margin: 10px 30px 30px 30px;
+  }
+
 </style>
 <body>
-    <div class=" container-scroller">
-        <!--Navbar-->
-        <nav class="navbar bg-primary-gradient col-lg-12 col-12 p-0 fixed-top navbar-inverse d-flex flex-row">
-            <div class="navbar-menu-wrapper d-flex align-items-center">
-                <button class="navbar-toggler navbar-toggler hidden-md-down align-self-center mr-3" type="button" data-toggle="minimize">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <form class="form-inline mt-2 mt-md-0 hidden-md-down">
-                    <input class="form-control mr-sm-2 search" type="text" placeholder="Search">
-                </form>
-                <ul class="navbar-nav ml-lg-auto d-flex align-items-center flex-row">
-                    <li class="nav-item">
-                        <a class="nav-link profile-pic" href="dashboard/index.html#"><img class="rounded-circle" src="./index_files/face.jpg" alt=""></a>
-                    </li>
-                    <li><a href="././">Home<span class="sr-only"></span></a></li>
+  <div class=" container-scroller">
+    <!--Navbar-->
+    <nav class="navbar bg-primary-gradient col-lg-12 col-12 p-0 fixed-top navbar-inverse d-flex flex-row">
+      <div class="navbar-menu-wrapper d-flex align-items-center">
+        <button class="navbar-toggler navbar-toggler hidden-md-down align-self-center mr-3" type="button" data-toggle="minimize">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <form class="form-inline mt-2 mt-md-0 hidden-md-down">
+        <input class="form-control mr-sm-2 search" type="text" placeholder="Search">
+        </form>
+        <ul class="navbar-nav ml-lg-auto d-flex align-items-center flex-row">
+          <li class="nav-item">
+            <a class="nav-link profile-pic" href="dashboard/index.html#"><img class="rounded-circle" src="./index_files/face.jpg" alt=""></a>
+          </li>
+          <li><a href="././">Home<span class="sr-only"></span></a></li>
           <li><a href="index.html">Dashboard</a></li>
           <li><a href="">Job Post Form</a></li>
           <li><a href="pages/jobposts.html">Job listings</a></li>
-           </ul>
-                  
-                <button class="navbar-toggler navbar-toggler-right hidden-lg-up align-self-center" type="button" data-toggle="offcanvas">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-        </nav>
-        <!--End navbar-->
-        <div class="container-fluid">
-                <div class="row row-offcanvas row-offcanvas-right">
-                    <nav class="bg-white sidebar sidebar-fixed sidebar-offcanvas" id="sidebar">
-                    <div class="user-info">
-                        <img src="../images/face.jpg" alt="">
-                        <p class="name">Javascript for User Name</p>
-                        <p class="designation">Javascript for Job Title</p>
-                        <span class="online"></span>
+        </ul>
+            
+        <button class="navbar-toggler navbar-toggler-right hidden-lg-up align-self-center" type="button" data-toggle="offcanvas">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+    <!--End navbar-->
+      <div class="container-fluid">
+              <div class="row row-offcanvas row-offcanvas-right">
+                  <nav class="bg-white sidebar sidebar-fixed sidebar-offcanvas" id="sidebar">
+                  <div class="user-info">
+                      <img src="../images/face.jpg" alt="">
+                      <p class="name">Javascript for User Name</p>
+                      <p class="designation">Javascript for Job Title</p>
+                      <span class="online"></span>
+                  </div>
+                      <ul class="nav">
+                          <li class="nav-item active">
+                              <a class="nav-link" href="#">
+                                  <!-- <i class="fa fa-dashboard"></i> -->
+                                  <img src="../images/icons/1.png" alt="">
+                                  <span class="menu-title">Dashboard</span>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="./schedule.html">
+                                  <img src="../images/icons/2.png" alt="">
+                                  <span class="menu-title">Schedule</span>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="./forms.html">
+                                  <!-- <i class="fa fa-wpforms"></i> -->
+                                  <img src="../images/icons/3.png" alt="">
+                                  <span class="menu-title">Rates</span>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="./maps.html">
+                                  <!-- <i class="fa fa-calculator"></i> -->
+                                  <img src="../images/icons/4.png" alt="">
+                                  <span class="menu-title">Maps</span>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="./jobposts.html">
+                                  <!-- <i class="fa fa-table"></i> -->
+                                  <img src="../images/icons/5.png" alt="">
+                                  <span class="menu-title">Job Posts</span>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="./chat.html">
+                                  <!-- <i class="fa fa-bar-chart"></i> -->
+                                  <img src="../images/icons/6.png" alt="">
+                                  <span class="menu-title">Chat Forum</span>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="./posts.html">
+                                  <!-- <i class="fa fa-font"></i> -->
+                                  <img src="../images/icons/7.png" alt="">
+                                  <span class="menu-title">Create Job</span>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="#">
+                                  <!-- <i class="fa fa-bold"></i> -->
+                                  <img src="../images/icons/10.png" alt="">
+                                  <span class="menu-title">Settings</span>
+                              </a>
+                          </li>
+                      </ul>
+                  </nav>
+              <!-- SIDEBAR ENDS -->
+              <div class="content-wrapper">
+                <div class="container">
+                <div class="row">
+                  <header id="job-list-header" class="d-flex w-100">
+                    <h3 class="text-primary mb-4">Job List</h3>
+                    <div class="form-group d-flex">
+                      <button id='new-post' class="btn btn-primary" type="submit">New Post</button>
                     </div>
-                        <ul class="nav">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">
-                                    <!-- <i class="fa fa-dashboard"></i> -->
-                                    <img src="../images/icons/1.png" alt="">
-                                    <span class="menu-title">Dashboard</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./schedule.html">
-                                    <img src="../images/icons/2.png" alt="">
-                                    <span class="menu-title">Schedule</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./forms.html">
-                                    <!-- <i class="fa fa-wpforms"></i> -->
-                                    <img src="../images/icons/3.png" alt="">
-                                    <span class="menu-title">Rates</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./maps.html">
-                                    <!-- <i class="fa fa-calculator"></i> -->
-                                    <img src="../images/icons/4.png" alt="">
-                                    <span class="menu-title">Maps</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./jobposts.html">
-                                    <!-- <i class="fa fa-table"></i> -->
-                                    <img src="../images/icons/5.png" alt="">
-                                    <span class="menu-title">Job Posts</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./chat.html">
-                                    <!-- <i class="fa fa-bar-chart"></i> -->
-                                    <img src="../images/icons/6.png" alt="">
-                                    <span class="menu-title">Chat Forum</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./posts.html">
-                                    <!-- <i class="fa fa-font"></i> -->
-                                    <img src="../images/icons/7.png" alt="">
-                                    <span class="menu-title">Create Job</span>
-                                </a>
-                            </li>
-                            <!--<li class="nav-item">
-                                <a class="nav-link" href="pages/typography.html">
-                                    <!-- <i class="fa fa-bold"></i> -->
-                                    <!--<img src="images/icons/8.png" alt="">
-                                    <span class="menu-title">Typography</span>
-                                </a>
-                            </li>-->
-                            <!--<li class="nav-item">
-                                <a class="nav-link" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                    <!-- <i class="fa fa-address-book"></i> -->
-                                    <!--<img src="images/icons/9.png" alt="">
-                                    <span class="menu-title">Sample Pages<i class="fa fa-sort-down"></i></span>
-                                </a>
-                                <div class="collapse" id="collapseExample">
-                                    <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="samples/blank_page.html">
-                                          Blank Page
-                                        </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="samples/register.html">
-                                          Register
-                                        </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="samples/login.html">
-                                          Login
-                                        </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="samples/not-found.html">
-                                          404
-                                        </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="samples/error.html">
-                                          500
-                                        </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>-->
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <!-- <i class="fa fa-bold"></i> -->
-                                    <img src="../images/icons/10.png" alt="">
-                                    <span class="menu-title">Settings</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                <!-- SIDEBAR ENDS -->
-
-                
-                <div class="content-wrapper">
-                  <div class="container">
-                  <div class="row">
-                    <header id="job-list-header" class="d-flex w-100">
-                      <h3 class="text-primary mb-4">Job List</h3>
-                      <div class="form-group d-flex">
-                        <button id='new-post' class="btn btn-primary" type="submit">New Post</button>
-                      </div>
-                      <div class="form-group d-flex ml-auto">
-                        <input id="job-search" class="form-control" type="text"/>
-                        <button class="btn btn-primary" type="submit">Search</button>
-                      </div>
-                    </header>
-                  </div>
-                  <div class="row mb-4">
-                      <div id="job-list-container" class="bg-white col-lg-12">
-                      </div>
-                  </div>
+                    <div class="form-group d-flex ml-auto">
+                      <input id="job-search" class="form-control" type="text"/>
+                      <button class="btn btn-primary" type="submit">Search</button>
+                    </div>
+                  </header>
                 </div>
-               
-            </div>
-        </div>
+                <div class="row mb-4">
+                    <div id="job-list-container" class="bg-white col-lg-12">
+                    </div>
+                </div>
+              </div>
+              
+          </div>
+      </div>
 
     </div>
 		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -281,8 +240,8 @@
                     var container = '<div id="job-list-item"class="mt-3"></div>';
                     var title =  '<div class="row title-row"></div><div class="col-md-12"><h3 id="job-title">' + title + '</h3></div></div>';
                     var mapButton = '<button type="button" class="btn btn-primary map-btn" id="btn' + i + '" data-toggle="modal" data-loc="'+ loc +'" data-target="#exampleModal">Map</button>';
-                    var jobSpec = '<div class="ml-2 row"><div class="col-md-12"><p id="job-spec">Employeer is: ' + fname + lname +' - ' + email + ' <br>'+ hours +' hours at ' + loc + '</p>' + mapButton + '<p id="job-description">'+ description + '</p></div></div>';
-					$('#job-list-container').append(container);
+                    var jobSpec = '<div class="ml-2 row"><div class="col-md-12"><p id="job-spec">Employeer is: ' + fname + " " + lname +' - ' + email + ' <br>'+ hours +' hours at ' + loc + '</p>' + mapButton + '<p id="job-description">'+ description + '</p></div></div>';
+					$('#job-list-container').prepend(container);
                     $('#job-list-item').append(title);
                     $('#job-list-item').append(jobSpec)
                     $('#job-list-item').append('<hr class="job-line">')
@@ -321,7 +280,7 @@
 							return map.setCenter(myLatLng);
 					});
 				};
-</script>
+  </script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzTLxC73DXyLzgblZUBKMdM4_LJgnKmKY&callback=initMap"
 	async defer></script>
 </body>
