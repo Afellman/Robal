@@ -7,25 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Star Admin</title>
     <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css" />
-		<link rel="stylesheet" href="../node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css" />
-		<link rel="stylesheet" href=" https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.bundle.min.js"/>
+	<link rel="stylesheet" href="../node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css" />
+	<link rel="stylesheet" href=" https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.bundle.min.js"/>
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="shortcut icon" href="../images/favicon.png" />
+    <link href="https://fonts.googleapis.com/css?family=Vollkorn+SC" rel="stylesheet">
 </head>
 <style>
- #job-title {
-  border-bottom: 1px solid grey;
-  display: inline-block;
-  }
-  #job-spec {
-  color: #656565;
-  }
 
-  #job-search {
-      margin-right: .5rem;
-  }
-  #new-post {
-      margin-left: 3rem;
+    * {
+        font-family: 'Vollkorn SC', serif;
+        
+    }
+    #job-title {
+    border-bottom: 1px solid grey;
+    display: inline-block;
+    }
+    #job-spec {
+    color: #656565;
+    }
+
+    #job-search {
+        margin-right: .5rem;
+    }
+    #new-post {
+        margin-left: 3rem;
   }
     #map {
 				height: 400px;
@@ -39,22 +45,23 @@
     <div class=" container-scroller">
         <!--Navbar-->
         <nav class="navbar bg-primary-gradient col-lg-12 col-12 p-0 fixed-top navbar-inverse d-flex flex-row">
-            <div class="bg-white text-center navbar-brand-wrapper">
-                <a class="navbar-brand brand-logo" href="#"><img src="../images/logo_star_black.png" /></a>
-                <a class="navbar-brand brand-logo-mini" href="#"><img src="../images/logo_star_mini.jpg" alt=""></a>
-            </div>
             <div class="navbar-menu-wrapper d-flex align-items-center">
                 <button class="navbar-toggler navbar-toggler hidden-md-down align-self-center mr-3" type="button" data-toggle="minimize">
                   <span class="navbar-toggler-icon"></span>
                 </button>
+                <form class="form-inline mt-2 mt-md-0 hidden-md-down">
+                    <input class="form-control mr-sm-2 search" type="text" placeholder="Search">
+                </form>
                 <ul class="navbar-nav ml-lg-auto d-flex align-items-center flex-row">
                     <li class="nav-item">
-                        <a class="nav-link profile-pic" href="#"><img class="rounded-circle" src="../images/face.jpg" alt=""></a>
+                        <a class="nav-link profile-pic" href="dashboard/index.html#"><img class="rounded-circle" src="./index_files/face.jpg" alt=""></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-th"></i></a>
-                    </li>
-                </ul>
+                    <li><a href="././">Home<span class="sr-only"></span></a></li>
+          <li><a href="index.html">Dashboard</a></li>
+          <li><a href="">Job Post Form</a></li>
+          <li><a href="pages/jobposts.html">Job listings</a></li>
+           </ul>
+                  
                 <button class="navbar-toggler navbar-toggler-right hidden-lg-up align-self-center" type="button" data-toggle="offcanvas">
                   <span class="navbar-toggler-icon"></span>
                 </button>
@@ -273,7 +280,7 @@
                     // Appeding everything to the DOM
                     var container = '<div id="job-list-item"class="mt-3"></div>';
                     var title =  '<div class="row title-row"></div><div class="col-md-12"><h3 id="job-title">' + title + '</h3></div></div>';
-                    var mapButton = '<button type="button" class="btn btn-primary map-btn" id="btn' + i + '" data-toggle="modal" data-target="#exampleModal">Map</button>';
+                    var mapButton = '<button type="button" class="btn btn-primary map-btn" id="btn' + i + '" data-toggle="modal" data-loc="'+ loc +'" data-target="#exampleModal">Map</button>';
                     var jobSpec = '<div class="ml-2 row"><div class="col-md-12"><p id="job-spec">Employeer is: ' + fname + lname +' - ' + email + ' <br>'+ hours +' hours at ' + loc + '</p>' + mapButton + '<p id="job-description">'+ description + '</p></div></div>';
 					$('#job-list-container').append(container);
                     $('#job-list-item').append(title);
@@ -285,7 +292,11 @@
                     
 				};
 			});
-            $('.map-btn').on('click')
+            // $('.map-btn').on('click', function() {
+            //     console.log(jobLocation)   ;   
+            //     jobLocation = $(this).attr('data-loc');
+                         
+            // });
             // Initialize Google Maps API
 						// NEED TO FIX MAPS DISPLAY AND ADD PROPER COORDS FROM FIREBASE
 				function initMap() {
