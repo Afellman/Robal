@@ -17,3 +17,9 @@ body {
 section {
   padding: 150px 0;
 }
+
+.btn {
+	position: fixed; 
+	top:200px
+	left: 200px;
+}
