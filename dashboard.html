@@ -16,18 +16,24 @@
     font-family: 'Vollkorn SC', serif;
   }
 
-
+  #chat-area p {
+    margin: 0px;
+  }
   .subtle {
     color: #656565;
   }
 
   #dashboard-container {
-    
+    max-width: 960px;
     padding: 20px 50px 20px 50px
   }
 
   .chat-card {
     padding: 10px;
+  }
+
+  #chat-col {
+    margin: 0 auto;
   }
 
   #chat-submit {
@@ -37,46 +43,60 @@
   .inbox-message:hover {
     cursor: pointer;
   }
+
+  .bg-green {
+    background: rgba(73, 214, 136, 0.87);
+
+  }
+
+  #user-title {
+    margin: 0 auto;
+    text-decoration: underline;
+  }
+
+  #new-chat-box {
+    margin-top: 10px;
+  }
 </style>
 <body>
   <div class="content-wrapper">
     <div class="container  bg-light" id="dashboard-container">
-      <div class="row">
+      <div class="row mb-5">
         <h1 id="user-title">User</h1>
       </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <div class="card bg-green" style="width: 18rem;">
+            <div class="card-body text-center">
               <h4 class="card-title">Wallet</h4>
               <p id="wallet-amount" class="card-text d-inline-block">10</p><span class="d-inline"> Hours</span>
             </div>
           </div>
         </div>
-        <div class="col-md-6">
-            <div class="card" style="width: 18rem;">
-              <div class="card-body">
-                <h4 class="card-title text-center">Inbox</h4>
-                <button class="btn btn-primary" data-toggle="modal" data-target="#inboxModal">Check Inbox</button>
-              </div>
+        <div class="col-md-4">
+          <div class="card bg-green" style="width: 18rem;">
+            <div id="inbox-card" class="card-body text-center">
+              <h4 class="card-title text-center">Inbox</h4>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#inboxModal">Check Inbox</button>
             </div>
           </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card bg-green" style="width: 18rem;">
+            <div class="card-body text-center">
+              <h4 class="card-title">Jobs Completed</h4>
+              <p id="jobs-completed" class="card-text d-inline-block">3</p><span class="d-inline"> Jobs</span>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col-md-6">
       </div>
       <div class="row">
-        <div class="col-md-6">
-          blah
-        </div>
-        <div class="col-md-6">
-          blah
-        </div>
-      </div>
-      <div class="row mb-2">
-        <div class="col-lg-6">
-          <div class="card chat-card">
+        <div class="col-lg-10" id="chat-col">
+          <div class="card chat-card bg-green">
             <div class="card-block">
-              <h5 class="card-title mb-4">Chat about everything Robal!</h5>
+              <h5 class="card-title mb-2">Chat about everything Robal!</h5>
               <form class="forms-sample">
                 <div class="form-group">
                   <div id="chat-area">
