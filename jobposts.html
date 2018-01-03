@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Job Posts</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css?family=Vollkorn+SC" rel="stylesheet">
+</head>
+<style>
+
+  * {
+    font-family: 'Vollkorn SC', serif;
+  }
+  
+  #job-title {
+    border-bottom: 1px solid grey;
+    display: inline-block;
+  }
+
+  .subtle {
+    color: #656565;
+  }
+
+  #job-search {
+    margin-right: .5rem;
+  }
+
+  #new-post {
+    margin-left: 3rem;
+  }
+
+  #map {
+    height: 400px;
+  }
+
+  .job-line {
+    margin: 10px 30px 30px 30px;
+  }
+
+  .job-btn {
+    margin: 10px;
+  }
+
+  #jobs-container {
+    
+    padding: 20px 50px 20px 50px
+  }
+
+
+</style>
+<body>
+  <div class="content-wrapper">
+    <div class="container" id="jobs-container">
+      <div class="row">
+        <header id="job-list-header" class="d-flex w-100">
+         <h3 class="text-primary mb-4">Job List</h3>
+        </header>
+      </div>
+      <div class="row mb-4">
+        <div id="job-list-container" class="bg-light col-lg-12">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Google maps MODAL -->
+  <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+          </div>
+          <div class="modal-body">
+            <div id="map">
+            </div>
+          </div>
+          <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+      </div>
+      </div>
+  </div>
+  <!-- Conact Modal -->
+  <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Contact</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Send a message to the Job Poster!</p>
+          <p class="subtle">include your email/phone number</p>
+          <input class="form-control" type="text" id='contact-msg'>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="contact-btn" class="btn btn-primary" data-dismiss="modal">Submit</button>
+        </div>
+      </div>
+    </div>
+    </div>
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzTLxC73DXyLzgblZUBKMdM4_LJgnKmKY&callback=initMap"
+  async defer></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+    <script>
+			// Initializing Firebase
+			var config = {
+			apiKey: "AIzaSyCRUos4srVsw2Gw6_ghM2YTUSXdm-L6kEo",
+			authDomain: "robal-f2619.firebaseapp.com",
+			databaseURL: "https://robal-f2619.firebaseio.com",
+			projectId: "robal-f2619",
+			storageBucket: "robal-f2619.appspot.com",
+			messagingSenderId: "1011207778959"
+			};
+			firebase.initializeApp(config);
+
+       // Initializing variables
+      var jobLocation;
+			var database = firebase.database();
+			var jobPostArray = [];
+
+			// Function turning snapshop into an Array
+			function snapshotToArray(snapshot) {
+				var returnArr = [];
+				snapshot.forEach(function(childSnapshot) {
+					var item = childSnapshot.val();
+					item.key = childSnapshot.key;
+					returnArr.push(item);
+					});
+				return returnArr;
+			};
+
+			// Gathering data of job posts from Firebase
+			database.ref("/jobPost").on('value', function(snapshot) {
+				jobPostArray = snapshotToArray(snapshot);
+				console.log(jobPostArray)
+				// running through the array of posts, storing each key/value locally, 
+				// then appending them to the dom
+				for (var i = 0; i < jobPostArray.length - 1; i ++) {
+					var fname = jobPostArray[i].name;
+          var lname = jobPostArray[i].lastname;
+					var email = jobPostArray[i].eaddress;
+					var hours = jobPostArray[i].hrs;
+					var loc = jobPostArray[i].area;
+					var description = jobPostArray[i].need;
+					var title = jobPostArray[i].work;
+          // Appeding everything to the DOM
+          var contact = '<button type="button" class="job-btn btn btn-primary" data-toggle="modal" data-target="#contactModal">Contact</button>'
+          var container = '<div id="job-list-item"class="mt-3"></div>';
+          var title =  '<div class="row title-row"></div><div class="col-md-12"><h3 id="job-title">' + title + '</h3></div></div>';
+          var mapButton = '<button type="button" class="job-btn btn btn-primary map-btn" data-toggle="modal" data-loc="'+ loc +'" data-target="#mapModal">Map</button>';
+          var jobSpec = '<div class="ml-2 row"><div class="col-md-12"><p class="subtle">Employeer is: ' + fname + " " + lname +' - ' + email + ' <br>'+ hours +' hours at ' + loc + '</p>' +'<p id="job-description">'+ description + '</p></div></div>';
+          $('#job-list-container').prepend(container);
+          $('#job-list-item').append(title);
+          $('#job-list-item').append(jobSpec);
+          $('#job-list-item').append(mapButton);
+          $('#job-list-item').append(contact);
+          $('#job-list-item').append('<hr class="job-line">');           
+				};
+			});
+
+            // Initialize Google Maps API -------------------
+						// NEED TO FIX MAPS DISPLAY AND ADD PROPER COORDS FROM FIREBASE
+				function initMap() {
+
+					var myLatLng = {lat: 40.495157, lng: -74.446850};
+
+					// Create a map object and specify the DOM element for display.
+					var map = new google.maps.Map(document.getElementById('map'), {
+						center: myLatLng,
+						zoom: 13
+					});
+
+					// Create a marker and set its position.
+					var marker = new google.maps.Marker({
+						map: map,
+						position: myLatLng,
+						title: 'Hello World!'
+					});
+                    
+					$("#map").on("shown.bs.modal", function(e) {
+							google.maps.event.trigger(map, "resize");
+							return map.setCenter(myLatLng);
+					});
+				};
+        // ---------------------------
+
+        // Sending Message to employer
+
+        $('#contact-btn').on('click', function () {
+          var jobAcceptMsg = $('#contact-msg').val();
+          database.ref('/jobAcceptMsg').push(jobAcceptMsg);
+        });
+
+  </script>
+	
+</body>
+
+</html>
