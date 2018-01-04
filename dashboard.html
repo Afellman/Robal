@@ -6,18 +6,29 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Dashboard</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/post.css">
   <link rel="stylesheet" href="./assets/css/style.css" />
   <link href="https://fonts.googleapis.com/css?family=Vollkorn+SC" rel="stylesheet">
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-database.js"></script>
 </head>
 <style>
 
   * {
     font-family: 'Vollkorn SC', serif;
   }
+  .navbar-brand {
+    font-size: 30px;
 
+}
   #chat-area p {
-    margin: 0px;
+    margin-bottom: 2px;
+    background: #aaa8a8b9;
+    display: inline-block;
+    padding: 3px 5px 3px 5px;
+    border-radius: 10px;
   }
   .subtle {
     color: #656565;
@@ -37,6 +48,7 @@
   }
 
   #chat-submit {
+    vertical-align: bottom;
     margin-left: 10px;
   }
 
@@ -44,94 +56,124 @@
     cursor: pointer;
   }
 
-  .bg-green {
-    background: rgba(73, 214, 136, 0.87);
 
-  }
-
-  #user-title {
-    margin: 0 auto;
-    text-decoration: underline;
-  }
+ 
 
   #new-chat-box {
+    width: 50%;
     margin-top: 10px;
   }
   
+  #dashboard-container {
+    max-width: 960px;
+    padding: 20px 50px 20px 50px;
+    background: #F7F7F9;
+  }
+
 </style>
 <body>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">Robal</a>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home<span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="dashboard.html">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="post.html">Job Post Form</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="jobposts.html">Job Listings</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Become a Member
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="register.html">Member Registration</a>
+              <a class="dropdown-item" href="login.html">Login</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      </nav>
   <div class="content-wrapper">
-    <div class="container  bg-light" id="dashboard-container">
+    <div class="container" id="dashboard-container">
       <div class="row mb-5">
         <h1 id="user-title">User</h1>
       </div>
+      <hr>
       <div class="row mb-3">
         <div class="col-md-4">
-          <div class="card bg-green" style="width: 18rem;">
-            <div class="card-body text-center">
-              <h4 class="card-title">Wallet</h4>
-              <p id="wallet-amount" class="card-text d-inline-block">10</p><span class="d-inline"> Hours</span>
+          <div class="panel panel-default text-center">
+            <div class="panel-heading">
+              <h3 class="panel-title">Wallet</h3>
+            </div>
+            <div class="panel-body">
+              <p id="wallet-amount" class="card-text d-inline-block"></p>
             </div>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="card bg-green" style="width: 18rem;">
-            <div id="inbox-card" class="card-body text-center">
-              <h4 class="card-title text-center">Inbox</h4>
+          <div class="panel panel-default text-center">
+            <div class="panel-heading">
+              <h3 class="panel-title">Inbox</h3>
+            </div>
+            <div class="panel-body">
               <button class="btn btn-primary" data-toggle="modal" data-target="#inboxModal">Check Inbox</button>
             </div>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="card bg-green" style="width: 18rem;">
-            <div class="card-body text-center">
-              <h4 class="card-title">Jobs Completed</h4>
-              <p id="jobs-completed" class="card-text d-inline-block">3</p><span class="d-inline"> Jobs</span>
+          <div class="panel panel-default text-center">
+            <div class="panel-heading">
+              <h3 class="panel-title">Jobs Completed</h3>
+            </div>
+            <div class="panel-body">
+                <p id="jobs-completed" class="card-text d-inline-block"></p>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-6">
-      </div>
       <div class="row">
-        <div class="col-lg-10" id="chat-col">
-          <div class="card chat-card bg-green">
-            <div class="card-block">
-              <h5 class="card-title mb-2">Chat about everything Robal!</h5>
-              <form class="forms-sample">
-                <div class="form-group">
-                  <div id="chat-area">
-                  </div>
-                  <div class="d-flex" id="new-chat-div">
-                    <input type='text' id='new-chat-box' class="form-control"/>
-                    <button id="chat-submit" class="btn btn-primary">Submit</button>
-                  </div>
-                </div>
-              </form>
+        <div class="col-lg-8" id="chat-col">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Chat about everything Robal!</h3>
+            </div>
+            <div class="panel-body">
+              <div id="chat-area">
+              </div>
+              <div class="form-group form-inline" id="new-chat-div">
+                <input type='text' id='new-chat-box' class="form-control"/>
+                <button id="chat-submit" class="btn btn-primary">Submit</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-    <!-- Inbox Modal -->
-    <div class="modal fade" id="inboxModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="inboxModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Inbox</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Inbox</h4>
           </div>
-          
           <div class="modal-body">
-              <p class="subtle">click to delete message</p>
+            <p class="subtle">click to delete message</p>
             <ul id="inbox">
             </ul>
           </div>
           <div class="modal-footer">
-            <button type="button" id="contact-btn" class="btn btn-primary" data-dismiss="modal">close</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal">close</button>
           </div>
         </div>
       </div>
@@ -145,7 +187,7 @@
 async defer></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
   <script>
     			$(document).ready(function() {
@@ -161,9 +203,12 @@ async defer></script>
 				firebase.initializeApp(config);
 				
 				// Storing Firebase in database
-				var database = firebase.database();
+        var database = firebase.database();
+        var auth = firebase.auth();
 				var postNumber;
         var jobAcceptMessages = [];
+        var uid;
+        var userInfo;
 				// function to store snapshot data in an array
 				function snapshotToArray(snapshot) {
 					var returnArr = [];
@@ -176,20 +221,54 @@ async defer></script>
 					});
 					return returnArr;
 				};
+        // Checking if signed in and assigning unique user id locally
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            uid = user.uid
+            console.log("User is signed in.")
+            populateWithUserData(uid);
+
+          } else {
+            console.log('No user is signed in.')
+            alert('you are not signed in');
+          }
+        });
+
+        // getting user data from firebase
+        function populateWithUserData(uid){
+          database.ref('/registration').on('value', function(snapshot) {
+            var userArray = snapshotToArray(snapshot);
+            for (var i = 0; i < userArray.length; i++) {
+              if (userArray[i].id == uid){
+                console.log('user found')
+                var info = userArray[i];
+                addUserInfoToDom(info);
+              }
+            }
+          })
+        };
+
+        // Adding user info to the DOM
+        function addUserInfoToDom(userInfo) {
+          $('#user-title').text(userInfo.name + " " + userInfo.lastname)
+          $('#wallet-amount').text(userInfo.hours + " hours");
+          $('#jobs-completed').text(userInfo.jobs_completed);
+
+        }
+
 
 				// grabbing shapshot from firebase/chatbox/posts
-				
         database.ref('/chatBox/posts').on('value', function(snapshot) {
-            
 					chatBoxArray = snapshotToArray(snapshot);
 					console.log(chatBoxArray)
 					postNumber = snapshot.postNumber;
                     $('#chat-area').empty();
+
 					// running through the array of posts, storing each locally, 
 					// then appending it to the dom
 					for (var i = chatBoxArray.length - 1; i > chatBoxArray.length - 7; i --){
 						var line = chatBoxArray[i];
-						$('#chat-area').prepend('<p> - ' + line + '</p>');
+						$('#chat-area').prepend('<p> - ' + line + '</p><br>');
 					};
 				});
 				database.ref('/chatBox').on('value', function(snapshot) {
