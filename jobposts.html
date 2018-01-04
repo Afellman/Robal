@@ -143,7 +143,7 @@
             <input class="form-control" type="text" id='contact-msg'>
           </div>
           <div class="modal-footer">
-            <button type="button" id="contact-btn" class="btn btn-primary">Submit</button>
+            <button type="button" id="contact-btn" data-dismiss="modal" class="btn btn-primary">Submit</button>
           </div>
         </div>
       </div>
@@ -152,7 +152,9 @@
     src="https://code.jquery.com/jquery-3.2.1.js"
     integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
     crossorigin="anonymous"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-database.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzTLxC73DXyLzgblZUBKMdM4_LJgnKmKY&callback=initMap"
   async defer></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -174,9 +176,12 @@
        // Initializing variables
       
       var database = firebase.database();
+      var auth = firebase.auth()
       var jobLocation;
 			var jobPostArray = [];
       var mapLocation;
+      var userEmail;
+      var receiver;
 			// Function turning snapshop into an Array
 			function snapshotToArray(snapshot) {
 				var returnArr = [];
@@ -187,6 +192,20 @@
 					});
 				return returnArr;
 			};
+
+      // Checking if signed in and assigning unique user id locally
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          console.log(user.email)
+          userEmail = user.email
+          console.log("User is signed in.")
+          console.log(userEmail)
+        } else {
+          console.log('No user is signed in.')
+          alert('you are not signed in');
+        }
+      });
+
 
 			// Gathering data of job posts from Firebase
 			database.ref("/jobPost").on('value', function(snapshot) {
@@ -203,7 +222,7 @@
 					var description = jobPostArray[i].need;
 					var title = jobPostArray[i].work;
           // Appeding everything to the DOM
-          var contact = '<button type="button" class="job-btn btn btn-primary" data-toggle="modal" data-target="#contactModal">Contact</button>'
+          var contact = '<button type="button" class="btn btn-primary contact-modal-btn" data-email="'+email+'" data-toggle="modal" data-target="#contactModal">Contact</button>'
           var container = '<div id="job-list-item"class="mt-3"></div>';
           var title =  '<div class="row title-row"><div class="col-md-12"><h3 id="job-title">' + title + '</h3></div></div>';
           var mapButton = '<button type="button" class="job-btn btn btn-primary map-btn" data-toggle="modal" data-loc="'+ location +'" data-target="#mapModal">Map</button>';
@@ -275,12 +294,22 @@
     // ---------------------------
 
 
-    
+    // Assigning receiver variable locally
+    $('.contact-modal-btn').on('click', function() {
+      console.log('modal')
+      receiver = $(this).attr('data-email')
+      console.log(receiver)
+    });
     // Pushing job accept message to firebase
 
-    $('#contact-btn').on('click', function () {
+    $('#contact-btn').on('click', function (e) {
       var jobAcceptMsg = $('#contact-msg').val();
-      database.ref('/jobAcceptMsg').push(jobAcceptMsg);
+      var msgObj = {
+        from : userEmail,
+        to : receiver,
+        msg : jobAcceptMsg
+      };
+      database.ref('/jobAcceptMsg').push(msgObj);
     });
 
   </script>
