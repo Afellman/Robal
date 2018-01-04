@@ -46,7 +46,7 @@
   }
 
   #jobs-container {
-    
+    max-width: 960px;
     padding: 20px 50px 20px 50px
   }
 
@@ -134,7 +134,7 @@
       var jobLocation;
 			var database = firebase.database();
 			var jobPostArray = [];
-
+      var mapLocation;
 			// Function turning snapshop into an Array
 			function snapshotToArray(snapshot) {
 				var returnArr = [];
@@ -157,56 +157,89 @@
           var lname = jobPostArray[i].lastname;
 					var email = jobPostArray[i].eaddress;
 					var hours = jobPostArray[i].hrs;
-					var loc = jobPostArray[i].area;
+					var location = jobPostArray[i].area;
 					var description = jobPostArray[i].need;
 					var title = jobPostArray[i].work;
           // Appeding everything to the DOM
           var contact = '<button type="button" class="job-btn btn btn-primary" data-toggle="modal" data-target="#contactModal">Contact</button>'
           var container = '<div id="job-list-item"class="mt-3"></div>';
           var title =  '<div class="row title-row"></div><div class="col-md-12"><h3 id="job-title">' + title + '</h3></div></div>';
-          var mapButton = '<button type="button" class="job-btn btn btn-primary map-btn" data-toggle="modal" data-loc="'+ loc +'" data-target="#mapModal">Map</button>';
-          var jobSpec = '<div class="ml-2 row"><div class="col-md-12"><p class="subtle">Employeer is: ' + fname + " " + lname +' - ' + email + ' <br>'+ hours +' hours at ' + loc + '</p>' +'<p id="job-description">'+ description + '</p></div></div>';
+          var mapButton = '<button type="button" class="job-btn btn btn-primary map-btn" data-toggle="modal" data-loc="'+ location +'" data-target="#mapModal">Map</button>';
+          var jobSpec = '<div class="ml-2 row"><div class="col-md-12"><p class="subtle">Employeer is: ' + fname + " " + lname +' - ' + email + ' <br>'+ hours +' hours at ' + location + '</p>' +'<p id="job-description">'+ description + '</p></div></div>';
           $('#job-list-container').prepend(container);
           $('#job-list-item').append(title);
           $('#job-list-item').append(jobSpec);
           $('#job-list-item').append(mapButton);
           $('#job-list-item').append(contact);
-          $('#job-list-item').append('<hr class="job-line">');           
+          $('#job-list-item').append('<hr class="job-line">');    
+                 
 				};
 			});
+      
+      
+    
+    // Initialize Google Maps API -------------------
 
-            // Initialize Google Maps API -------------------
-						// NEED TO FIX MAPS DISPLAY AND ADD PROPER COORDS FROM FIREBASE
-				function initMap() {
-
-					var myLatLng = {lat: 40.495157, lng: -74.446850};
-
-					// Create a map object and specify the DOM element for display.
-					var map = new google.maps.Map(document.getElementById('map'), {
-						center: myLatLng,
-						zoom: 13
-					});
-
-					// Create a marker and set its position.
-					var marker = new google.maps.Marker({
-						map: map,
-						position: myLatLng,
-						title: 'Hello World!'
-					});
-                    
-					$("#map").on("shown.bs.modal", function(e) {
-							google.maps.event.trigger(map, "resize");
-							return map.setCenter(myLatLng);
-					});
-				};
-        // ---------------------------
-
-        // Sending Message to employer
-
-        $('#contact-btn').on('click', function () {
-          var jobAcceptMsg = $('#contact-msg').val();
-          database.ref('/jobAcceptMsg').push(jobAcceptMsg);
+    // NEED TO ADD PROPER COORDS FROM FIREBASE
+    function initMap() {
+      $(document).on('click', '.map-btn', function(){
+        mapLocation = $(this).attr('data-loc');
+        codeAddress();
+      });
+      
+      function codeAddress() {
+      var myLatLng;
+      var map;
+      var marker;
+      var geocoder = new google.maps.Geocoder()
+        geocoder.geocode( { 'address': mapLocation}, function(results, status) {
+          if (status == 'OK') {
+            console.log(results[0].geometry.location);
+            myLatLng = results[0].geometry.location;
+            marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+                
+            });
+            showMap(myLatLng)
+            return myLatLng
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
         });
+        
+      };
+
+      function showMap(myLatLng){
+        console.log(myLatLng)
+
+        // Create a map object and specify the DOM element for display.
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: myLatLng,
+          zoom: 13
+        });
+        // Create a marker and set its position.
+        var marker = new google.maps.Marker({
+          map: map,
+          position: myLatLng,
+          title: 'Hello World!'
+        });
+        $("#mapModal").on("shown.bs.modal", function(e) {
+            google.maps.event.trigger(map, "resize");
+            return map.setCenter(myLatLng);
+        });  
+      };
+    };
+    // ---------------------------
+
+
+    
+    // Pushing job accept message to firebase
+
+    $('#contact-btn').on('click', function () {
+      var jobAcceptMsg = $('#contact-msg').val();
+      database.ref('/jobAcceptMsg').push(jobAcceptMsg);
+    });
 
   </script>
 	
