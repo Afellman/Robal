@@ -1,0 +1,83 @@
+<!Doctype html>
+    <html lang="en-us">
+
+    </html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/reset.html">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <!--My CSS-->
+        <link href="assets/css/jamieStyles.css" rel="stylesheet" type="text/css">
+        <!-- My Javascript -->
+        <script src="assets/javascript/jamiescript.js"></script>
+        <!-- JQuery CDN -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <title>Dashboard</title>
+    </head>
+    <body> 
+        <div class = "container-fluid">
+            <div class = "row">
+                <div class="col-md-3">
+                    <nav class="navbar navbar-default navbar-fixed-left">
+                        <div class = "bg-white text-center navbar-brand-wrapper">
+                            <a class ="navbar-brand brand-logo"href="">
+                                <img src="assets/images/logo.png">
+                            </a>
+                        </div>
+                     <!--Sidebar Nav-->
+                        <ul class="nav navbar-nav navbar-mymargin">
+                            <!-- <li><img src="assets/images/Logo.png"></li> -->
+                            <li><a href="#">DashBoard </a></li>
+                            <li><a href="#">Hour Rates</a></li>
+                            <li><a href="#">Job Posts</a></li>
+                            <li><a href="#">Chat Forum</a></li>
+                            <li><a href="#">Create Job</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-md-9">
+                    <!--Dashboard Content-->
+                    <div class = "row">
+                       <div class="col-md-8">
+                           <h1>Dashboard</h1>
+                       </div> 
+                       <div class="col-md-1"></div>
+                       <div class="col-md-2">
+                        <div class="col-md-1"></div>
+                        <!--Once Authentication is TRUE place user name here-->
+                           <h3>Hello <span id ="userName">Jamie</span></h3>
+                       </div>  
+                    </div><!--END Title-->
+                    <div class = "row">
+                        <div class = "col-md-5">
+                            <div class="tile">
+                               <div class= "tile-block">
+                                    <iframe class="chartjs-hidden-iframe" style="display: block; overflow: hidden; border: 0px none; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;" tabindex="-1"></iframe>
+                                    <h4 class ="card-title mb-4">Job List</h4>
+                                    <canvas id="lineChart" style="height: 269px; display: block; width: 538px;" width="1076" height="538"></canvas>
+                               </div> 
+                            </div>
+                        </div>
+                        <div class = "col-md-1"></div>
+                        <div class = "col-md-5">
+                            <div class="tile">
+                               <div class= "tile-block">
+                                    <iframe class="chartjs-hidden-iframe" style="display: block; overflow: hidden; border: 0px none; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;" tabindex="-1"></iframe>
+                                    <h4 class ="card-title mb-4">Your Rating</h4>
+                                    <canvas id="lineChart" style="height: 269px; display: block; width: 538px;" width="1076" height="538"></canvas>
+                               </div> 
+                            </div>
+                        </div> 
+                    </div>        
+                </div>
+            </div>
+        </div><!--End Container-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+
+    </body>
