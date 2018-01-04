@@ -150,7 +150,11 @@ nav {
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 0.5rem 1rem; }
+  padding: 0.5rem 1rem;
+     height: 60px;
+    background: red; /* For browsers that do not support gradients */
+    background: linear-gradient(to right, #708090, #008B8B, #8FBC8F ); /* Standard syntax (must be last) */
+}
 
 .navbar-brand {
   display: inline-block;
