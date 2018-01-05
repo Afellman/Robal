@@ -1,0 +1,45 @@
+.navbar-fixed-left{
+	width: 180px;
+	position: fixed;
+	border-radius: 5px;
+	height: 100%;
+
+}
+.navbar-mymargin{
+	margin-top: 70px;
+}
+
+li{
+	text-align: center;
+}
+
+.navbar .navbar-brand-wrapper .navbar-brand img {
+    max-width: 100%;
+    width: 100%;
+    margin-top: auto;
+}
+
+.tile{
+	margin-top: 55px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	background-color: #fff;
+	border: 1px solid rgba(24, 23, 23, 0.08);
+	border-radius: 5px;
+}
+
+.tile-block{
+	flex: 1 1 auto;
+	padding: 4px;
+
+}
+
+.mb-4{
+	margin-bottom: 1.5rem !important;
+	padding-left: 10px;
+}
+
+canvas{
+	display: inline-block;
+}
