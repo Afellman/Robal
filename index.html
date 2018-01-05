@@ -2,170 +2,104 @@
 <html lang="en">
 
   <head>
-<<<<<<< HEAD
 
-=======
->>>>>>> master
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Scrolling Nav</title>
+    <title>Robal Home Page</title>
 
- <!--CDN Link-->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+<link rel ="style" href="Robal/assets/css/style.css">
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-    <!-- Custom styles for this template -->
-    <link href="assets/css/style.css" rel="stylesheet">
+ <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-  <!--CDN Links-->
-  
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-<<<<<<< HEAD
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
-    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
-    crossorigin="anonymous">
-    
-    <title>title</title>
- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <!-- Required meta tags -->
-      
-     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <title>Robal.com</title>
-      <link rel="stylesheet" href="./index_files/font-awesome.min.css">
-      <link rel="stylesheet" href="./index_files/perfect-scrollbar.min.css">
-      <link rel="stylesheet" href="./index_files/style.css">
-      <link rel="shortcut icon" href="dashboard/images/favicon.png">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Vollkorn+SC" rel="stylesheet">
+
 
  <style>
 
 
-.bg-primary-gradient {
-    background-color: red;
-}
-  .navbar-brand {
-    font-size: 30px;
+
+ body  {
+
+    background-image: url("assets/images/diversity.jpg");
+    background-repeat:no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: auto
+    ;
 
 }
-.container {
-  background-color:;
-  font-size: 20px;
 
+.home-btns {
+    cursor: pointer;
+    position: fixed; 
+    top: 350px;
+    left: 535px ;
+    width: 100%;
 }
-
-
-
-
-body {
-    font-family: 'Vollkorn SC', serif;
-    font-size: 22px;
-    background-image: url("../images/cwork.jpg");
-    background-size: 100%;
-}
+ .btn {
+  margin:10px;
+ }
       
+  #mission-statement {
+    border: 1px solid black;
+    color: white;
+    background: rgba(3, 3, 3, .5);
+    font-size: 30px;
+    font-family: 'Vollkorn SC', serif;
 
- </style></head>
+
+  }
+
+ </style>
+
+</head>
   
- <body>
-      <div class=" container-scroller">
-        <!--Navbar-->
-        <nav class="navbar bg-primary-gradient col-lg-12 col-12 p-0 fixed-top navbar-inverse d-flex flex-row">
-            <div class="navbar-menu-wrapper d-flex align-items-center">
-                <button class="navbar-toggler navbar-toggler hidden-md-down align-self-center mr-3" type="button" data-toggle="minimize">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <form class="form-inline mt-2 mt-md-0 hidden-md-down">
-                    <input class="form-control mr-sm-2 search" type="text" placeholder="Search">
-                </form>
-                <ul class="navbar-nav ml-lg-auto d-flex align-items-center flex-row">
-                    <li class="nav-item">
-                        <a class="nav-link profile-pic" href="dashboard/index.html#"><img class="rounded-circle" src="./index_files/face.jpg" alt=""></a>
-                    </li>
-                    <li><a href="home.html">Home<span class="sr-only"></span></a></li>
-          <li><a href="dashboard.html">Dashboard</a></li>
-          <li><a href="posting.html">Job Post Form</a></li>
-          <li><a href="listings.html">Job listings</a></li>
-           </ul>
-                  
-               <button class="navbar-toggler navbar-toggler-right hidden-lg-up align-self-center" type="button" data-toggle="offcanvas">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-        </nav>
-<!--End navbar-->
-=======
->>>>>>> master
-  </head>
 
   <body> 
 <!-- Navigation -->
     
 
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom JavaScript for this theme -->
-    <script src="js/apps.js"></script>
-
 <html>
 <head>
-<style>
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-th, td {
-    padding: 5px;
-    text-align: left;    
-}
-</style>
 </head>
 <body>
+<header class="text-center">
+  <h2>Robal Mission Statement </h2>
+  <p><strong>Time is Money</strong></p>
+  <img src="assets/images/robal.png" alt="Smiley face" style="float:center;width:90px;height:90px;">
+  
 
-<h2>Robal Mission Statement</h2>
-<table style="width:100%">
-  <tr>
-    
-  </tr>
-  <tr>
-    <p><strong>Time is Money</strong></p>
-<img src="http://www.publicdomainpictures.net/pictures/80000/velka/clock-icon.jpg" alt="Smiley face" style="float:left;width:42px;height:42px;">
-<td>Starting off as an idea between a few individiauls who shared one common goal: To create a platform that is socially consciouess and could better the world especially in communities that need it the most. We here at Robal have combined compassion with employment to deliver a space that allows you to trade in time and not in currency becuase time is money.</td>
-    
-    
-  </tr>
-</table>
+</header>
+<div class="col-md-12 text-center">
+  <p id= "mission-statement">Starting off as an idea between a few individiauls who shared one common goal: To create a platform that is socially consciouess and could better the world especially in communities that need it the most. We here at Robal have combined compassion with employment to deliver a space that allows you to trade in time and not in currency becuase time is money.</p>
+</div>
+<div class = "col-md-4"> </div> 
 
-<img src="https://www.cargill.com/image/1432083306302/hero-careers-global-inclusion-and-diversity.jpg" alt="At Robal we have time for everyone and anyone">
+<div class="home-btns btn-group btn-group-lg col-md-2 text-center">
+  <button type="button" class="btn btn-primary "> <a href= 'login.html' class='headernavlink'>Login</a></button>
+  <button type="button" class="btn btn-primary "><a href= 'register.html' class='headernavlink'>Register</a></button>
+  
+</div>
 
 
 </body>
 </html>
 
   </body>
-<<<<<<< HEAD
 
-=======
+
   <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -174,5 +108,4 @@ th, td {
   <script type="text/javascript" src="./assets/javascript/app.js"></script>
 </html>
 
-=======
->>>>>>> master
+
