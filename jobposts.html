@@ -294,7 +294,7 @@
 
 
     // Assigning receiver variable locally
-    $('.contact-modal-btn').on('click', function() {
+    $(document).on('click', '.contact-modal-btn', function() {
       console.log('modal')
       receiver = $(this).attr('data-email')
       console.log(receiver)
