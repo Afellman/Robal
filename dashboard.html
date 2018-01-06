@@ -4,6 +4,7 @@
     </html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" type="text/css" href="css/reset.html">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -12,72 +13,142 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
         <!--My CSS-->
         <link href="assets/css/jamieStyles.css" rel="stylesheet" type="text/css">
-        <!-- My Javascript -->
-        <script src="assets/javascript/jamiescript.js"></script>
+        <!--Alexis CSS -->
+        <link href="assets/css/post.css" rel="stylesheet" type="text/css">
         <!-- JQuery CDN -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+        <!-- My Javascript -->
+        <script src="assets/javascript/jamiescript.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Vollkorn+SC" rel="stylesheet">
         <title>Dashboard</title>
     </head>
     <body> 
         <div class = "container-fluid">
             <div class = "row">
-                <div class="col-md-3">
-                    <nav class="navbar navbar-default navbar-fixed-left">
-                        <div class = "bg-white text-center navbar-brand-wrapper">
-                            <a class ="navbar-brand brand-logo"href="">
-                                <img src="assets/images/logo.png">
-                            </a>
+                <div class="col-md-12">
+                    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+                        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Robal</a>
+                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                            <ul class="navbar-nav">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="index.html">Home<span class="sr-only"></span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="dashboard.html">Dashboard</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Job Post Form</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="jobposts.html">Job Listings</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Become a Member</a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                        <a class="dropdown-item" href="#">Member Registration</a>
+                                        <a class="dropdown-item" href="login.html">Login</a>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
-                     <!--Sidebar Nav-->
-                        <ul class="nav navbar-nav navbar-mymargin">
-                            <!-- <li><img src="assets/images/Logo.png"></li> -->
-                            <li><a href="#">DashBoard </a></li>
-                            <li><a href="#">Hour Rates</a></li>
-                            <li><a href="#">Job Posts</a></li>
-                            <li><a href="#">Chat Forum</a></li>
-                            <li><a href="#">Create Job</a></li>
-                        </ul>
                     </nav>
+                    <!--End navbar-->  
                 </div>
-                <div class="col-md-9">
-                    <!--Dashboard Content-->
-                    <div class = "row">
-                       <div class="col-md-8">
-                           <h1>Dashboard</h1>
-                       </div> 
-                       <div class="col-md-1"></div>
-                       <div class="col-md-2">
-                        <div class="col-md-1"></div>
-                        <!--Once Authentication is TRUE place user name here-->
-                           <h3>Hello <span id ="userName">Jamie</span></h3>
-                       </div>  
-                    </div><!--END Title-->
-                    <div class = "row">
-                        <div class = "col-md-5">
-                            <div class="tile">
-                               <div class= "tile-block">
-                                    <iframe class="chartjs-hidden-iframe" style="display: block; overflow: hidden; border: 0px none; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;" tabindex="-1"></iframe>
-                                    <h4 class ="card-title mb-4">Job List</h4>
-                                    <canvas id="lineChart" style="height: 269px; display: block; width: 538px;" width="1076" height="538"></canvas>
-                               </div> 
-                            </div>
+            </div>
+
+            <div class = "row">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-4">
+                    <h1>Dashboard</h1>
+                </div>
+                <div class="col-md-2">
+
+                </div>
+                <div class="col-md-4">
+                    <h1>Welcome <span id = "userName">Jamie</span></h1>
+                </div>
+                <div class="col-md-1">
+                </div>
+            </div><!--End Dashboar Header-->
+              <div class ="row">
+                    <div class="col-md-1">
+                    </div>
+                <div class="col-md-4">
+                    <div class="tile">
+                        <div class= "tile-block">
+                            <h3 class ="card-title mb-4">Wallet</h3>
                         </div>
-                        <div class = "col-md-1"></div>
-                        <div class = "col-md-5">
-                            <div class="tile">
-                               <div class= "tile-block">
-                                    <iframe class="chartjs-hidden-iframe" style="display: block; overflow: hidden; border: 0px none; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;" tabindex="-1"></iframe>
-                                    <h4 class ="card-title mb-4">Your Rating</h4>
-                                    <canvas id="lineChart" style="height: 269px; display: block; width: 538px;" width="1076" height="538"></canvas>
-                               </div> 
-                            </div>
-                        </div> 
-                    </div>        
+                        <div class="row">
+                           <div class="col-md-12 sub-block text-center">
+                               <p>test</p>
+                           </div> 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-4">
+                    <div class="tile">
+                        <div class= "tile-block">
+                            <h3 class ="card-title mb-4">Inbox</h3>
+                        </div>
+                        <div class="col-md-12 sub-block text-center">
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#inboxModal">Check Inbox</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-4">
+                    <div class="tile">
+                        <div class= "tile-block">
+                            <h3 class ="card-title mb-4">Job Completed</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-4">
+                    <div class="tile">
+                        <div class= "tile-block">
+                            <h3 class ="card-title mb-4">Chat About Everything ROBAL!</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
                 </div>
             </div>
         </div><!--End Container-->
+          <div class="modal fade" id="inboxModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Inbox</h4>
+          </div>
+          <div class="modal-body">
+            <p class="subtle">click to delete message</p>
+            <ul id="inbox">
+            </ul>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">close</button>
+          </div>
+        </div>
+      </div>
+    </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="js/bootstrap.min.js"></script>
+        
 
     </body>
