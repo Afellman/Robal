@@ -30,7 +30,7 @@ body, .container {
 }
   #chat-area p {
     margin-bottom: 2px;
-    background: #aaa8a8b9;
+    background: #aaa8a87e;
     display: inline-block;
     padding: 3px 5px 3px 5px;
     border-radius: 10px;
@@ -262,7 +262,6 @@ async defer></script>
 				// function to store snapshot data in an array
 				function snapshotToArray(snapshot) {
 					var returnArr = [];
-
 					snapshot.forEach(function(childSnapshot) {
 						var item = childSnapshot.val();
 						item.key = childSnapshot.key;
