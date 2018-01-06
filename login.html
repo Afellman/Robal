@@ -2,8 +2,6 @@
 <html lang="en">
 <head>
 
-
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Required meta tags -->
 
@@ -18,26 +16,18 @@
 
 <style>
 
-
-.bg-primary-gradient {
-    background-color:;
-
-}
-
 .navbar-brand {
     font-size: 30px;
 
 }
 .container {
-  background-color:;
   font-size: 20px;
 
 }
 
 body {
     font-family: 'Vollkorn SC', serif;
-    font-size: 22px;
-    background-image: url("./assets/images/cwork.jpg");  
+    font-size: 22px; 
     background-size: 100%;
 }
       
@@ -45,43 +35,44 @@ body {
 </head>
   
 <body>
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <a class="navbar-brand" href="#">Robal</a>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="index.html">Home<span class="sr-only"></span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="dashboard.html">Dashboard</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Job Post Form</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="jobposts.html">Job Listings</a>
-      </li>
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
     
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         Become a Member
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Member Registration</a>
-          <a class="dropdown-item" href="login.html">Login</a>
-        </div>
-      </li>
-    </ul>
-  </div>
-</nav>
-<!--End navbar-->   
+    <a class="navbar-brand" href="#">Robal</a>
 
-<br>
-<br>
-<br>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home<span class="sr-only"></span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="dashboard.html">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="post.html">Job Post Form</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="jobposts.html">Job Listings</a>
+        </li>
+      
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           Become a Member
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="register.html">Member Registration</a>
+            <a class="dropdown-item" href="login.html">Login</a>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+    
+  </nav>
+  <!--End navbar-->  
 
 <div class="container">
     <div class="row">
@@ -98,14 +89,14 @@ body {
    <div class="row">
     <div class="col-md-6 mb-3">
       <label for="email-login-input">Email</label>
-      <input type="text" class="form-control is-valid" id="email-login-input" placeholder="developer@gmail.com" value="" required="">
+      <input type="email" class="form-control is-valid" id="email-login-input" placeholder="developer@gmail.com" value="" required="">
     </div>
 </div>
 <br>
  <div class="row">
     <div class="col-md-6 mb-3">
-      <label for="hours-input">Password</label>
-      <input type="text" class="form-control is-valid" id="password-input" placeholder="Password" value="" required="">
+      <label for="password-input">Password</label>
+      <input type="password" class="form-control is-valid" id="password-input" placeholder="Your Password" value="" required="">
     </div>
 </div>
 
@@ -140,6 +131,20 @@ body {
 
   <script>
 
+$("#add-form-btn").prop('disabled', true); // diables the submit button
+
+$(':text' && ':password').on('input change', function () { // enables submit button when every field is not empty
+  $(':text' && ':password').each(function () {
+    if ($(this).val() != '') {
+      $('#add-form-btn').prop('disabled', false);
+      return false;
+    }
+    else {
+      $('#add-form-btn').prop('disabled', true);
+    }
+  });
+});  
+
 
 var config = {
   apiKey: "AIzaSyCRUos4srVsw2Gw6_ghM2YTUSXdm-L6kEo",
@@ -153,32 +158,33 @@ firebase.initializeApp(config);
 
 // Storing Firebase in database
 var database = firebase.database();
+var auth = firebase.auth();
 
 $("#add-form-btn").on("click", function(event) {
-event.preventDefault();
+  event.preventDefault();
 
-var email = $("#email-login-input").val().trim();
-var password = $("#password-input").val().trim();
+  var email = $("#email-login-input").val().trim();
+  var password = $("#password-input").val().trim();
 
-
-console.log(email);
-console.log(password);
-
-
-var loginInfo = {
+  console.log(email);
+  console.log(password);
 
 
-eaddress: email,
-pword: password,
+  auth.signInWithEmailAndPassword(email, password)
+        .then(function(firebaseUser) {
+            uid = firebaseUser.uid;
+            console.log("User " + firebaseUser.uid + " signed in!");
+            return firebaseUser;
+        }).then(function(firebaseUser) {
+            console.log("Logged in as:", firebaseUser.uid);
+            window.location.href = "dashboard.html"
+        }).catch(function(error) {
+            console.error("Error: ", error);
+            window.location.href = "register.html"
+        }).then();
 
-};
-
-database.ref('/login').push(loginInfo);
-
-
-$("#email-login-input").val("");
-$("#password-input").val("");
-
+  $("#email-login-input").val("");
+  $("#password-input").val("");
 });
 
 
