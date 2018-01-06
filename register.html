@@ -2,8 +2,6 @@
 <html lang="en">
 <head>
 
-
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Required meta tags -->
 
@@ -14,115 +12,116 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Vollkorn+SC" rel="stylesheet">
 
 <style>
-
-
-.bg-primary-gradient {
-    background-color:
-}
-
-.navbar-brand {
-    font-size: 30px;
-
-}
-.container {
-  background-color:;
-  font-size: 20px;
-
-}
-
-body {
-    font-family: 'Vollkorn SC', serif;
-    font-size: 22px;
-    background-image: url("./assets/images/cwork.jpg"); 
-    background-size: 100%;
-}
+  .navbar-brand {
+      font-size: 30px;
+  }
+  .container {
+    font-size: 20px;
+  }
+  body {
+    background: url('./assets/images/cwork.jpg') !important;
+      font-family: 'Vollkorn SC', serif;
+      font-size: 22px; 
+      background-size: 100%;
+  }
       
+</style>
 
-</style></head>
+</head>
   
 <body>
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <a class="navbar-brand" href="#">Robal</a>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="index.html">Home<span class="sr-only"></span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="dashboard.html">Dashboard</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Job Post Form</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="jobposts.html">Job Listings</a>
-      </li>
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
     
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         Become a Member
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Member Registration</a>
-          <a class="dropdown-item" href="login.html">Login</a>
-        </div>
-      </li>
-    </ul>
-  </div>
-</nav>
-<!--End navbar-->   
+    <a class="navbar-brand" href="#">Robal</a>
 
-<br>
-<br>
-<br>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
 
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home<span class="sr-only"></span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="dashboard.html">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="post.html">Job Post Form</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="jobposts.html">Job Listings</a>
+        </li>
+      
+        <li class="nav-item dropdown active">
+          <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           Become a Member
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="register.html">Member Registration</a>
+            <a class="dropdown-item" href="login.html">Login</a>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+
+  </nav>
+  <!--End navbar-->   
 
   <div class="container">
+
     <div class="row">
       <div class="col-md-9">
-      <h1>Register For Robal</h1>
-      <hr>
+        <h1>Register For Robal</h1>
+        <hr>
       </div>
     </div>
   <!-- Entry Form -->
 
-    <form>
+    <form id = "reg-form">
+
       <div class="row">
+
         <div class="col-md-6 mb-3">
-          <label for="name-input">First Name</label>
-          <input type="text" class="form-control is-valid" id="name-input" placeholder="Ricky" value="" required>
+          <label for="name">First Name</label>
+          <input type="text" class="form-control is-valid" id="name" placeholder="Ricky" required>
         </div>
+
         <div class="col-md-6 mb-3">
-          <label for="last-name-input">Last Name</label>
-          <input type="text" class="form-control is-valid" id="last-name-input" placeholder="Bobby" value="" required="">
+          <label for="lastname">Last Name</label>
+          <input type="text" class="form-control is-valid" id="lastname" placeholder="Bobby" required>
         </div>
+
       </div>
 
     <br>
 
       <div class="row">
+
         <div class="col-md-6 mb-3">
-          <label for="email-input">Email</label>
-          <input type="text" class="form-control is-valid" id="email-input" placeholder="developer@gmail.com" value="" required="">
+          <label for="email">Email</label>
+          <input type="email" class="form-control is-valid" id="email" placeholder="developer@gmail.com" required>
         </div>
+        
         <div class="col-md-6 mb-3">
-          <label for="location-input">Location</label>
-          <input type="text" class="form-control is-valid" id="location-input" placeholder="Long Branch, NJ" value="" required="">
+          <label for="location">Location</label>
+          <input type="text" class="form-control is-valid" id="location" placeholder="Long Branch, NJ" required>
         </div>
+
       </div>
 
     <br>
 
     <div class="row">
       <div class="col-md-6 mb-3">
-        <label for="hours-input">Password</label>
-        <input type="text" class="form-control is-valid" id="password-input" placeholder="Password" value="" required="">
+        <label for="password">Password (must be at least 6 characters)</label>
+        <input type="password" class="form-control is-valid" id="password" placeholder="New Password" required>
       </div>
     </div>
 
@@ -130,8 +129,8 @@ body {
 
     <div class="row">
       <div class="col-md-12 mb-3">
-      <label for="job-input">Skills - this is optional, but helpful for robal employers</label>
-          <textarea type="text" class="form-control is-valid" id="skills-input" placeholder="My Skills" value="" required="" style="width:620px;height:250px"></textarea>
+        <label for="skills">Skills</label>
+            <textarea type="text" class="form-control is-valid" id="skills" placeholder="My Skills" required style="width:500px;height:150px"></textarea>
       </div>
     </div>
 
@@ -142,145 +141,107 @@ body {
            <button class="btn btn-primary" id="reg-form-btn" type="submit" style="background-color:#708090;width:80px;height:40px;color:white">Submit</button>
         </div>
       </div>
+
     </form>
 
+  </div> <!-- end container -->
+
+
+   <div class="row">
+    <div class="bottom">
+      <div class="col-lg-12">
+      </div>  
     </div>
-</div>
-
-
- <div class="row">
-  <div class="bottom">
-    <div class="col-lg-12">
-    </div>  
   </div>
-</div>
 
-  <div class="row">
-  <footer>
-    <p> </p>
-  </footer>
+    <div class="row">
+    <footer>
+      <p></p>
+    </footer>
 
-  <script>
+    <script>
 
-//     // Name can't be blank
-// $('#name-input').on('input', function() {
-//   var input=$(this);
-//   var is_name=input.val();
-//   if(is_name){input.removeClass("invalid").addClass("valid");}
-//   else{input.removeClass("valid").addClass("invalid");}
-// });
-
-// // Email must be an email
-// $('#email-input').on('input', function() {
-//   var input=$(this);
-//   var re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-//   var is_email=re.test(input.val());
-//   if(is_email){input.removeClass("invalid").addClass("valid");}
-//   else{input.removeClass("valid").addClass("invalid");}
-// });
-
-// // Message can't be blank
-// $('#skills-input').keyup(function(event) {
-//   var input=$(this);
-//   var message=$(this).val();
-//   console.log(message);
-//   if(message){input.removeClass("invalid").addClass("valid");}
-//   else{input.removeClass("valid").addClass("invalid");} 
-// });
-
-// // After Form Submitted Validation
-// $("#contact_submit button").click(function(event){
-//   var form_data=$("#contact").serializeArray();
-//   var error_free=true;
-//   for (var input in form_data){
-//     var element=$("#contact_"+form_data[input]['name']);
-//     var valid=element.hasClass("valid");
-//     var error_element=$("span", element.parent());
-//     if (!valid){error_element.removeClass("error").addClass("error_show"); error_free=false;}
-//     else{error_element.removeClass("error_show").addClass("error");}
-//   }
-//   if (!error_free){
-//     event.preventDefault(); 
-//   }
-//   else{
-//     alert('No errors: Form will be submitted');
-//   }
-// });
-
-// FireBase
-var config = {
-      apiKey: "AIzaSyCRUos4srVsw2Gw6_ghM2YTUSXdm-L6kEo",
-      authDomain: "robal-f2619.firebaseapp.com",
-      databaseURL: "https://robal-f2619.firebaseio.com",
-      projectId: "robal-f2619",
-      storageBucket: "robal-f2619.appspot.com",
-      messagingSenderId: "1011207778959"
-};
-firebase.initializeApp(config);
-    
-// Storing Firebase in database
-var database = firebase.database();
-var auth = firebase.auth();
-
-$("#reg-form-btn").on("click", function(event) {
-  event.preventDefault();
-  var uid;
-  var fName = $("#name-input").val().trim();
-  var lName = $("#last-name-input").val().trim();
-  var email = $("#email-input").val().trim();
-  var location = $("#location-input").val().trim();
-  var password = $("#password-input").val().trim();
-  var skills = $("#skills-input").val().trim();
-  console.log('click');
-
-  console.log(fName);
-  console.log(lName);
-  console.log(email);
-  console.log(location);
-  console.log(password);
-  console.log(skills);
-
-  auth.createUserWithEmailAndPassword(email, password)
-      .then(function(firebaseUser) {
-          uid = firebaseUser.uid;
-          console.log("User " + firebaseUser.uid + " created successfully!");
-          register(uid)
-          return firebaseUser;
-      }).then(function(firebaseUser) {
-          console.log("Logged in as:", firebaseUser.uid);
-          window.location.href = "dashboard.html"
-      }).catch(function(error) {
-          console.error("Error: ", error);
-      }).then();
-
-function register(uid){
-  var registrationInfo = {
-    id: uid,
-    name: fName,
-    lastname: lName,
-    eaddress: email,
-    area: location,
-    pword: password,
-    skills: skills,
-    hours: 5
-
+$("#reg-form-btn").prop('disabled', false); // diables the submit button when set to 'true'
+$("#reg-form").validate();
+if (($(".form-control").valid()) == true) {
+    $("#reg-form-btn").prop('disabled', false);
+}
+  // FireBase
+  var config = {
+        apiKey: "AIzaSyCRUos4srVsw2Gw6_ghM2YTUSXdm-L6kEo",
+        authDomain: "robal-f2619.firebaseapp.com",
+        databaseURL: "https://robal-f2619.firebaseio.com",
+        projectId: "robal-f2619",
+        storageBucket: "robal-f2619.appspot.com",
+        messagingSenderId: "1011207778959"
   };
-  database.ref('/registration').push(registrationInfo);
-};
+  firebase.initializeApp(config);
+      
+  // Storing Firebase in database
+  var database = firebase.database();
+  var auth = firebase.auth();
+  firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            user = user.email
+            console.log("User is signed in.")
+            populateWithUserData(user);
 
-  $("#name-input").val("");
-  $("#last-name-input").val("");
-  $("#email-input").val("");
-  $("#location-input").val("");
-  $("#password-input").val("");
-  $("#skills-input").val("");
-
-});
-
-
-
-</script>
-</div>
+          } else {
+            console.log('No user is signed in.')
+          }
+        });
+  $("#reg-form-btn").on("click", function(event) {
+    event.preventDefault();
+    var uid;
+    var fName = $("#name").val().trim();
+    var lName = $("#lastname").val().trim();
+    var email = $("#email").val().trim();
+    var location = $("#location").val().trim();
+    var password = $("#password").val().trim();
+    var skills = $("#skills").val().trim();
+    console.log('click');
+    console.log(fName);
+    console.log(lName);
+    console.log(email);
+    console.log(location);
+    console.log(password);
+    console.log(skills);
+    auth.createUserWithEmailAndPassword(email, password)
+        .then(function(firebaseUser) {
+            uid = firebaseUser.uid;
+            console.log("User " + firebaseUser.uid + " created successfully!");
+            register(uid);
+            return firebaseUser;
+        }).then(function(firebaseUser) {
+            console.log("Logged in as:", firebaseUser.uid);
+            window.location.href = "dashboard.html";
+        }).catch(function(error) {
+            console.error("Error: ", error);
+        }).then();
+  function register(uid){
+   var registrationInfo = {
+     id: uid,
+     name: fName,
+     lastname: lName,
+     eaddress: email,
+     area: location,
+     pword: password,
+     skills: skills,
+     hours: 5,
+     jobsAccepted: {}
+   };
+    database.ref('/registration').push(registrationInfo);
+  };
+    $("#name").val("");
+    $("#lastname").val("");
+    $("#email").val("");
+    $("#location").val("");
+    $("#password").val("");
+    $("#skills").val("");
+  });
+  
+  </script>
+  </div>
 
 </body>
 </html>

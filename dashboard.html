@@ -8,13 +8,16 @@
   <title>Dashboard</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="./assets/css/post.css">
-  <link rel="stylesheet" href="./assets/css/style.css" />
   <link href="https://fonts.googleapis.com/css?family=Vollkorn+SC" rel="stylesheet">
   <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-database.js"></script>
 </head>
 <style>
+
+body, .container {
+  background: url('./assets/images/cwork.jpg') !important;
+}
 
   * {
     font-family: 'Vollkorn SC', serif;
@@ -385,7 +388,14 @@ async defer></script>
 				});
 			
         
-       
+        $("#sign-out-btn" ).on("click", function(event) {
+          firebase.auth().signOut().then(function() {
+          // Sign-out successful.
+          }).catch(function(error) {
+          // An error happened.
+          });
+        });
+
 
       // End document.ready
 			});

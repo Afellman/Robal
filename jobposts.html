@@ -12,7 +12,16 @@
   <link rel="icon" href="./assets/images/favicon.png">
 </head>
 <style>
+body, .container {
+  background: url('./assets/images/cwork.jpg') !important;
+}
 
+  #job-list-item  * {
+    color: black;
+  }
+  #job-list-item  .btn {
+    color: white;
+  }
   .container {
     background: none;
   }
@@ -167,6 +176,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     <script>
+      
 			// Initializing Firebase
 			var config = {
 			apiKey: "AIzaSyCRUos4srVsw2Gw6_ghM2YTUSXdm-L6kEo",
@@ -316,12 +326,14 @@
       database.ref('/jobAcceptMsg').push(msgObj);
     });
 
-    firebase.auth().signOut().then(function() {
-  console.log('Sign-out successful')
-  }).catch(function(error) {
-  console.log('sign out error')
-  });
-
+    $('#sign-out-btn').on('click', function() {
+      firebase.auth().signOut().then(function() {
+        console.log('Sign-out successful')
+        }).catch(function(error) {
+        console.log('sign out error')
+        });
+    });
+  
 
   </script>
 	
