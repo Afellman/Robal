@@ -4,7 +4,7 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Dashboard</title>
+        <title>Robal | Home</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="./assets/css/post.css">
         <link rel="icon" href="./assets/images/favicon.png">
@@ -20,10 +20,16 @@
   font-family: 'Vollkorn SC', serif;
 }
 
+#worker-img {
+  border-radius: 10px;
+}
+
+  #workers {
+    margin: 0 auto;
+  }
 
 
  .container-fluid  {
-
     background-image: url("assets/images/diversity.jpg");
     background-repeat:no-repeat;
     background-attachment: fixed;
@@ -36,7 +42,7 @@
 .home-btns {
   
     cursor: pointer;
-    margin-left: 38%;
+    margin: 0 auto;
     margin-top: 15%;
     text-align: center ;
 }
@@ -47,19 +53,20 @@
   a:hover{
     text-decoration: none;
   }
- .btn {
-   border-radius: 20px;
+  .btn {
+    border-radius: 20px;
     padding: 15px 30px 15px 30px;
     margin:10px;
  }
 
  .moar {
+  margin: 0 auto;
    margin-top: 50px;
-   margin-left: 43%;
+  
 }
       
   #mission-statement {
-    margin-top: 150px;
+    margin: 50px 0px 50px 0px;
     padding: right, left;
     border: 1px solid black;
     color: white;
@@ -76,14 +83,16 @@
     width: 90px !important;
     height: 90px !important;
   }
-body, html, .main {
+  .worker-row {
+    background: rgb(223, 223, 223);
+    padding: 50px 0px 50px 0px;
+  }
+  
+  body, html {
     height: 100%;
     
 }
 
-section {
-    min-height: 100%;
-}
  header > * {
    padding: 30px 0px 30px 0px;
    margin: 10px;
@@ -93,6 +102,9 @@ section {
   background-color: gray 
  }
 
+  .main {
+    background: black;
+  }
  </style>
 <body>
   <header class="text-center">
@@ -117,13 +129,16 @@ section {
 </div>
 
 </div>
-  <div class="main" id="section2">
-    <section style="background-color:black"> <div class="col-md-12 text-center">
+  <div class="main row" id="section2">
+    <div class="col-md-12 text-center">
     <p id= "mission-statement">Starting off as an idea between a few individuals who shared one common goal: To create a platform that is socially consciouess and could better the world especially in communities that need it the most. We here at Robal have combined compassion with employment to deliver a space that allows you to trade in time and not in currency becuase time is money.</p>
   </div>
-  <img src="assets/images/diversityworkers.jpeg" alt="Smiley face" style="float:center">
-  <div class ="col-md-3"> </div> </section>
-  </div>
+</div>
+<div class="row worker-row">
+  <div id="workers" class="col-md-6 col-md-offset-2">
+  <img id="worker-img" src="assets/images/diversityworkers.jpeg" alt="Smiley face" style="float:center">
+</div>
+</div>
 
 </body>
 
@@ -131,9 +146,6 @@ section {
 src="https://code.jquery.com/jquery-3.2.1.js"
 integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
 crossorigin="anonymous"></script>
-<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzTLxC73DXyLzgblZUBKMdM4_LJgnKmKY&callback=initMap"
-async defer></script>
 <script
   src="https://code.jquery.com/jquery-3.2.1.js"
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
@@ -144,13 +156,24 @@ async defer></script>
 
 <script>
     $(document).ready(function(){
+      var config = {
+					apiKey: "AIzaSyCRUos4srVsw2Gw6_ghM2YTUSXdm-L6kEo",
+					authDomain: "robal-f2619.firebaseapp.com",
+					databaseURL: "https://robal-f2619.firebaseio.com",
+					projectId: "robal-f2619",
+					storageBucket: "robal-f2619.appspot.com",
+					messagingSenderId: "1011207778959"
+				};
+				firebase.initializeApp(config);
+        var database = firebase.database();
+        var auth = firebase.auth();
       // Add smooth scrolling to all links
       $("#learn-more").click(function() {
         $('html, body').animate({
             scrollTop: $("#section2").offset().top
         }, 2000);
-    });
-    });
+      });
+      });
     
      // Checking if signed in and assigning unique user id locally
      firebase.auth().onAuthStateChanged(function(user) {

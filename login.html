@@ -6,9 +6,10 @@
 <!-- Required meta tags -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Log Into Robal </title>
+<title>Robal | Login</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="assets/css/post.css">
+<link rel="icon" href="./assets/images/favicon.png">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
@@ -17,7 +18,10 @@
 <link href="https://fonts.googleapis.com/css?family=Vollkorn+SC" rel="stylesheet">
 
 <style>
-
+  label.error {
+    color: red;
+    font-size: 12px;
+  }
 .navbar-brand {
     font-size: 30px;
 }
@@ -93,14 +97,14 @@ body {
    <div class="row">
     <div class="col-md-6 mb-3">
       <label for="email-login-input">Email</label>
-      <input type="email" class="form-control is-valid" id="email-login-input" placeholder="developer@gmail.com" value="" required="">
+      <input type="email" class="form-control is-valid" id="email-login-input" placeholder="developer@gmail.com" required data-msg-email="Please use the format: username@email.com">
     </div>
 </div>
 <br>
  <div class="row">
     <div class="col-md-6 mb-3">
       <label for="password-input">Password (must be at least 6 characters)</label>
-      <input type="password" class="form-control is-valid" id="password-input" placeholder="Your Password" value="" required="">
+      <input type="password" class="form-control is-valid" id="password-input" placeholder="New Password" required data-rule-minlength="6">
     </div>
 </div>
 
@@ -137,12 +141,9 @@ body {
   </footer>
 
   <script>
-    
-$("#add-form-btn").prop('disabled', false); // diables the submit button when set to 'true'
-$("#add-form").validate();
-if (($(".form-control").valid()) == true) {
-    $("#add-form-btn").prop('disabled', false);
-}
+
+$(".form-control").valid();
+
 var config = {
   apiKey: "AIzaSyCRUos4srVsw2Gw6_ghM2YTUSXdm-L6kEo",
   authDomain: "robal-f2619.firebaseapp.com",
@@ -166,8 +167,8 @@ firebase.auth().onAuthStateChanged(function(user) {
         });
 $("#add-form-btn").on("click", function(event) {
   event.preventDefault();
-  var email = $("#email-login-input").val().trim();
-  var password = $("#password-input").val().trim();
+  var email = $("#email-login-input").val();
+  var password = $("#password-input").val();
   console.log(email);
   console.log(password);
   auth.signInWithEmailAndPassword(email, password)
@@ -187,6 +188,14 @@ $("#add-form-btn").on("click", function(event) {
   $("#password-input").val("");
 
 });
+
+$("#sign-out-btn" ).on("click", function(event) {
+          firebase.auth().signOut().then(function() {
+          // Sign-out successful.
+          }).catch(function(error) {
+          // An error happened.
+          });
+        });
 
 </script>
 </div>
