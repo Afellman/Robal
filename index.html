@@ -31,6 +31,12 @@
 * {
   font-family: 'Vollkorn SC', serif;
 }
+
+#logo {
+  width: 90px !important;
+  height: 90px !important;
+}
+
  .container-fluid  {
 
     background-image: url("assets/images/diversity.jpg");
@@ -39,6 +45,7 @@
     background-position: center;
     background-size: auto;
     height: 800px;
+}
 
 }
 
@@ -47,7 +54,7 @@
     cursor: pointer;
     margin-left: 38%;
     margin-top: 15%;
-    text-align: center;
+    text-align: center ;
 }
 
   a { 
@@ -65,6 +72,8 @@
 }
       
   #mission-statement {
+    margin-top: 200px;
+    padding: right, left;
     border: 1px solid black;
     color: white;
     background: rgba(3, 3, 3, .5);
@@ -93,19 +102,22 @@ section {
    margin: 10px;
    display: inline;
  }
+ header {
+  background-color: gray 
+ }
  </style>
 
 </head>
   
 
-  <body> 
+ 
 <!-- Navigation -->
     
 
 <html>
 <body>
   <header class="text-center">
-      <img src="assets/images/robal.png" alt="Smiley face" style="float:center;width:90px;height:90px;">
+      <img id= "logo" src="assets/images/rlogo_orange.png" alt="Smiley face">
     <h2>Robal</h2>
     <p><strong>Time is Money</strong></p>
     
@@ -124,12 +136,14 @@ section {
   <a id="learn-more" href="#section2">Learn More</a> </div>
   </div>
 </div>
+
 </div>
   <div class="main" id="section2">
     <section style="background-color:black"> <div class="col-md-12 text-center">
-    <p id= "mission-statement">Starting off as an idea between a few individiauls who shared one common goal: To create a platform that is socially consciouess and could better the world especially in communities that need it the most. We here at Robal have combined compassion with employment to deliver a space that allows you to trade in time and not in currency becuase time is money.</p>
+    <p id= "mission-statement">Starting off as an idea between a few individuals who shared one common goal: To create a platform that is socially consciouess and could better the world especially in communities that need it the most. We here at Robal have combined compassion with employment to deliver a space that allows you to trade in time and not in currency becuase time is money.</p>
   </div>
-  <div class = "col-md-4"> </div> </section>
+  <img src="assets/images/diversityworkers.jpeg" alt="Smiley face" style="float:center">
+  <div class ="col-md-3"> </div> </section>
   </div>
 
 </body>
@@ -168,8 +182,7 @@ section {
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
-  <script type="text/javascript" src="./assets/javascript/app.js"></script>
+ 
 </html>
 
 
