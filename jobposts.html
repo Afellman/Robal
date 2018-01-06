@@ -86,7 +86,7 @@ body, .container {
             <a class="nav-link" href="dashboard.html">Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="post.html">Job Post Form</a>
+            <a class="nav-link" href="post.html">Post a Job</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link active" href="jobposts.html">Job Listings</a>
@@ -326,14 +326,14 @@ body, .container {
       database.ref('/jobAcceptMsg').push(msgObj);
     });
 
-    $('#sign-out-btn').on('click', function() {
+    $("#sign-out-btn" ).on("click", function(event) {
       firebase.auth().signOut().then(function() {
-        console.log('Sign-out successful')
-        }).catch(function(error) {
-        console.log('sign out error')
-        });
+      // Sign-out successful.
+      }).catch(function(error) {
+      // An error happened.
+      });
     });
-  
+
 
   </script>
 	
