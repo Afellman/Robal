@@ -102,6 +102,9 @@ body {
     </div>
 </div>
 
+<div id = "loginFail1"></div>
+<div id = "loginFail2"></div>
+
 <br>
 <br>
 <div class="row">
@@ -173,7 +176,9 @@ $("#add-form-btn").on("click", function(event) {
             window.location.href = "dashboard.html"
         }).catch(function(error) {
             console.error("Error: ", error);
-            window.location.href = "register.html"
+            // window.location.href = "register.html"
+            $('#loginFail1').text("Login failed.")
+            $('#loginFail2').text("Check your email and password, or register an account at our Member Registration page.")
         }).then();
 
   $("#email-login-input").val("");
