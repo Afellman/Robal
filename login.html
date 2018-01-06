@@ -12,6 +12,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Vollkorn+SC" rel="stylesheet">
 
 <style>
@@ -95,7 +97,7 @@ body {
 <br>
  <div class="row">
     <div class="col-md-6 mb-3">
-      <label for="password-input">Password</label>
+      <label for="password-input">Password (must be at least 6 characters)</label>
       <input type="password" class="form-control is-valid" id="password-input" placeholder="Your Password" value="" required="">
     </div>
 </div>
@@ -131,20 +133,11 @@ body {
 
   <script>
 
-$("#add-form-btn").prop('disabled', true); // diables the submit button
-
-$(':text' && ':password').on('input change', function () { // enables submit button when every field is not empty
-  $(':text' && ':password').each(function () {
-    if ($(this).val() != '') {
-      $('#add-form-btn').prop('disabled', false);
-      return false;
-    }
-    else {
-      $('#add-form-btn').prop('disabled', true);
-    }
-  });
-});  
-
+$("#add-form-btn").prop('disabled', false); // diables the submit button when set to 'true'
+$("#add-form").validate();
+if (($(".form-control").valid()) == true) {
+    $("#add-form-btn").prop('disabled', false);
+}
 
 var config = {
   apiKey: "AIzaSyCRUos4srVsw2Gw6_ghM2YTUSXdm-L6kEo",

@@ -122,7 +122,7 @@
 
     <div class="row">
       <div class="col-md-6 mb-3">
-        <label for="password">Password</label>
+        <label for="password">Password (must be at least 6 characters)</label>
         <input type="password" class="form-control is-valid" id="password" placeholder="New Password" required>
       </div>
     </div>
@@ -141,10 +141,6 @@
       <div class="row">
         <div class="col-md-6 mb-3">
            <button class="btn btn-primary" id="reg-form-btn" type="submit" style="background-color:#708090;width:80px;height:40px;color:white">Submit</button>
-        </div>
-
-        <div class="col-md-6 mb-3">
-           <button class="btn btn-primary" id="validate" type="button" style="background-color:red;width:100px;height:40px;color:white">Validate</button>
         </div>
       </div>
 
@@ -168,41 +164,10 @@
     <script>
 
 $("#reg-form-btn").prop('disabled', false); // diables the submit button when set to 'true'
-var isValid = 0;
-// $(".form-control").on('input change', function () { // enables submit button when every field is not empty
-//   $(".form-control" && '#skills').each(function () {
-//     if ($(this).val() != '') {
-//       $('#reg-form-btn').prop('disabled', false);
-//       // return false;
-//     }
-//     else {
-//       $('#reg-form-btn').prop('disabled', true);
-//     }
-//   });
-// });
-
-
 $("#reg-form").validate();
-
-
-
-$("#validate").on("click", function(event) {
-    event.preventDefault();
-    console.log("are the fields valid? " + $(".form-control").valid());
-    if (($(".form-control").valid()) == true) {
-        isValid = 1;
-        console.log("isValid: " + isValid);
-      }
-    // console.log("is the password valid? " + $("#password").valid());
-  });
-
-if (isValid === 1) {
-  $("#reg-form-btn").prop('disabled', false);
-  console.log("yes");
+if (($(".form-control").valid()) == true) {
+    $("#reg-form-btn").prop('disabled', false);
 }
-
-
-
 
 
   // FireBase
