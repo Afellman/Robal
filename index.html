@@ -22,71 +22,46 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css?family=Vollkorn+SC" rel="stylesheet">
 
-<script>
-$(document).ready(function(){
-  // Add smooth scrolling to all links
-  $("a").on('click', function(event) {
-
-    // Make sure this.hash has a value before overriding default behavior
-    if (this.hash !== "") {
-      // Prevent default anchor click behavior
-      event.preventDefault();
-
-      // Store hash
-      var hash = this.hash;
-
-      // Using jQuery's animate() method to add smooth page scroll
-      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-      $('html, body').animate({
-        scrollTop: $(hash).offset().top
-      }, 1000000, function(){
-   
-        // Add hash (#) to URL when done scrolling (default click behavior)
-        window.location.hash = hash;
-      });
-    } // End if
-  });
-});
-
-</script>
 
  <style>
 
 
-
- body  {
+* {
+  font-family: 'Vollkorn SC', serif;
+}
+ .container-fluid  {
 
     background-image: url("assets/images/diversity.jpg");
     background-repeat:no-repeat;
     background-attachment: fixed;
     background-position: center;
-    background-size: auto
-    ;
+    background-size: auto;
+    height: 800px;
 
 }
 
 .home-btns {
+  
     cursor: pointer;
-    position: fixed; 
-    top: 350px;
-    left: 535px ;
-    width: 100%;
+    margin-left: 38%;
+    margin-top: 15%;
+    text-align: center;
 }
 
-a{
-  color: white !important;
-}
+  a { 
+    color: white !important;
+  }
  .btn {
-  margin:10px;
+   border-radius: 20px;
+    padding: 15px 30px 15px 30px;
+    margin:10px;
  }
 
  .moar {
-    cursor: pointer;
-    position: fixed; 
-    top: 500px;
-    left: 700px ;
-    width: 100%;
+   margin-top: 50px;
+   margin-left: 43%;
 }
       
   #mission-statement {
@@ -99,6 +74,12 @@ a{
 
   }
 
+  #learn-more {
+    padding: 10px;
+    font-size: 20px;
+    background: grey;
+    border-radius: 10px;
+  }
 body, html, .main {
     height: 100%;
     
@@ -107,7 +88,11 @@ body, html, .main {
 section {
     min-height: 100%;
 }
-
+ header > * {
+   padding: 30px 0px 30px 0px;
+   margin: 10px;
+   display: inline;
+ }
  </style>
 
 </head>
@@ -118,44 +103,67 @@ section {
     
 
 <html>
-<head>
-</head>
 <body>
-<header class="text-center">
-  <h2>Robal Mission Statement </h2>
-  <p><strong>Time is Money</strong></p>
-  <img src="assets/images/robal.png" alt="Smiley face" style="float:center;width:90px;height:90px;">
-  
+  <header class="text-center">
+      <img src="assets/images/robal.png" alt="Smiley face" style="float:center;width:90px;height:90px;">
+    <h2>Robal</h2>
+    <p><strong>Time is Money</strong></p>
+    
+    
 
-</header>
-
-
-<div class="home-btns btn-group btn-group-lg col-md-2 text-center">
-  <button type="button" class="btn btn-primary "> <a href= 'login.html' class='headernavlink'>Login</a></button>
-  <button type="button" class="btn btn-primary "><a href= 'register.html' class='headernavlink'>Register</a></button>
-  
+  </header>
+<div class="container-fluid">
+<div class="row">
+  <div class="home-btns col-md-3">
+    <button type="button" class="btn btn-primary "> <a href= 'login.html' class='headernavlink'>Login</a></button>
+    <button type="button" class="btn btn-primary "><a href= 'register.html' class='headernavlink'>Register</a></button>
+  </div>
 </div>
-
-<div class="moar">
- <a href="#section2">Learn More</a> </div>
-
-<div class="main">
-  <section></section>
+<div class="row">
+  <div class="col-md-2 moar">
+  <a id="learn-more" href="#section2">Learn More</a> </div>
+  </div>
 </div>
-
-<div class="main" id="section2">
-  <section style="background-color:black"> <div class="col-md-12 text-center">
-  <p id= "mission-statement">Starting off as an idea between a few individiauls who shared one common goal: To create a platform that is socially consciouess and could better the world especially in communities that need it the most. We here at Robal have combined compassion with employment to deliver a space that allows you to trade in time and not in currency becuase time is money.</p>
 </div>
-<div class = "col-md-4"> </div> </section>
-</div>
+  <div class="main" id="section2">
+    <section style="background-color:black"> <div class="col-md-12 text-center">
+    <p id= "mission-statement">Starting off as an idea between a few individiauls who shared one common goal: To create a platform that is socially consciouess and could better the world especially in communities that need it the most. We here at Robal have combined compassion with employment to deliver a space that allows you to trade in time and not in currency becuase time is money.</p>
+  </div>
+  <div class = "col-md-4"> </div> </section>
+  </div>
 
 </body>
 </html>
 
-  </body>
+  
 
-
+<script>
+    $(document).ready(function(){
+      // Add smooth scrolling to all links
+      $("#learn-more").on('click', function(event) {
+    
+        // Make sure this.hash has a value before overriding default behavior
+        if (this.hash !== "") {
+          // Prevent default anchor click behavior
+          event.preventDefault();
+    
+          // Store hash
+          var hash = this.hash;
+    
+          // Using jQuery's animate() method to add smooth page scroll
+          // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+          $('html, body').animate({
+            scrollTop: $(hash).offset().top
+          }, 1000000, function(){
+       
+            // Add hash (#) to URL when done scrolling (default click behavior)
+            window.location.hash = hash;
+          });
+        } // End if
+      });
+    });
+    
+    </script>
   <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
