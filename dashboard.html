@@ -359,17 +359,11 @@ async defer></script>
           // Need to update firebase after delete
           $('#delete-job').on('click', function (){
             $('*[data-post="'+ dataPost + '"]').remove();
-            
+
         });     
         });
 			});
-      
-
         };
-     
-
-        
-
 				// Grabbing and appending chatbox 
         database.ref('/chatBox/posts').on('value', function(snapshot) {
 					chatBoxArray = snapshotToArray(snapshot);
