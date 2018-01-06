@@ -20,6 +20,7 @@ body, .container {
 }
 
   * {
+    font-size: 15px;
     font-family: 'Vollkorn SC', serif;
   }
   .navbar-brand {
@@ -253,7 +254,7 @@ async defer></script>
 				// Storing Firebase in database
         var database = firebase.database();
         var auth = firebase.auth();
-				var postNumber;
+        var postNumber = 0;
         var jobAcceptMessages = [];
         var user;
         var userInfo;
@@ -329,20 +330,24 @@ async defer></script>
           if (jobPostArray[i].eaddress == userInfo.eaddress) {
             var work = jobPostArray[i].work;
             posts.push(jobPostArray[i])
+            
             console.log(posts)
-            $('#posted-jobs').prepend('<li class="post-list-item" data-post="' + i + '"data-toggle="modal" data-target="#myPostedJobsModal">'+ work + '</li>');
+            $('#posted-jobs').prepend('<li class="post-list-item" data-post="' + postNumber + '"data-toggle="modal" data-target="#myPostedJobsModal">'+ work + '</li>');
+            postNumber++
           // Function to clear messages (need to refresh firebase after delete)
           };
         };
         $('.post-list-item').on('click', function() {
-          var postNumber = $(this).attr('data-post');
-          var fname = posts[postNumber].name;
-          var lname = posts[postNumber].lastname;
-          var email = posts[postNumber].eaddress;
-          var hours = posts[postNumber].hrs;
-          var location = posts[postNumber].area;
-          var description = posts[postNumber].need;
-          var title = posts[postNumber].work;
+          var dataPost = $(this).attr('data-post');
+          console.log(dataPost)
+          console.log(posts)
+          var fname = posts[dataPost].name;
+          var lname = posts[dataPost].lastname;
+          var email = posts[dataPost].eaddress;
+          var hours = posts[dataPost].hrs;
+          var location = posts[dataPost].area;
+          var description = posts[dataPost].need;
+          var title = posts[dataPost].work;
           // Appeding everything to the DOM
           var container = '<div id="job-list-item"class="mt-3"></div>';
           var title =  '<div class="row title-row"><div class="col-md-12"><h3 id="job-title">' + title + '</h3></div></div>';
@@ -353,7 +358,8 @@ async defer></script>
 
           // Need to update firebase after delete
           $('#delete-job').on('click', function (){
-            $('*[data-post="'+ postNumber + '"]').remove();
+            $('*[data-post="'+ dataPost + '"]').remove();
+            
         });     
         });
 			});
