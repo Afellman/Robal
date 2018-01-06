@@ -4,172 +4,179 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Required meta tags -->
-
+  
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Robal | Register</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="./assets/css/post.css">
+<link rel="stylesheet" type="text/css" href="assets/css/post.css">
+<link href="https://fonts.googleapis.com/css?family=Vollkorn+SC" rel="stylesheet">
 <link rel="icon" href="./assets/images/favicon.png">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-database.js"></script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
-<link href="https://fonts.googleapis.com/css?family=Vollkorn+SC" rel="stylesheet">
+
+</head>
 
 <style>
+
   label.error {
-    color: red;
-    font-size: 12px;
+      color: red;
+      font-size: 12px;
   }
+
   .navbar-brand {
       font-size: 30px;
   }
   .container {
+    background-color:;
     font-size: 20px;
   }
+
   body {
-    background: url('./assets/images/cwork.jpg') !important;
       font-family: 'Vollkorn SC', serif;
-      font-size: 22px; 
+      font-size: 22px;
+      background-image: url("./assets/images/cwork.jpg");  
       background-size: 100%;
   }
-      
+     
 </style>
-
-</head>
   
 <body>
-  <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="#">Robal</a>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">Home<span class="sr-only"></span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="dashboard.html">Dashboard</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="post.html">Post a Job</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="jobposts.html">Job Listings</a>
-        </li>
-      
-        <li class="nav-item dropdown active">
-          <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           Become a Member
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="register.html">Member Registration</a>
-            <a class="dropdown-item" href="login.html">Login</a>
-          </div>
-        </li>
-        <li class="nav-item">
-            <button type="button" class="btn btn-default btn-sm" id="sign-out-btn" style="margin-top: 10px">
-              <a class="glyphicon glyphicon-log-out" href="index.html">Log out</a>
-           </button>
-          </li>
-      </ul>
-    </div>
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">Robal</a>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
 
-  </nav>
-  <!--End navbar-->   
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">Home<span class="sr-only"></span></a>
+      </li>
 
-  <div class="container">
+      <li class="nav-item">
+        <a class="nav-link" href="dashboard.html">Dashboard</a>
+      </li>
 
-    <div class="row">
-      <div class="col-md-9">
-        <h1>Register For Robal</h1>
-        <hr>
-      </div>
-    </div>
-  <!-- Entry Form -->
+      <li class="nav-item">
+        <a class="nav-link" href="post.html">Post a Job</a>
+      </li>
 
-    <form id = "reg-form">
-
-      <div class="row">
-
-        <div class="col-md-6 mb-3">
-          <label for="name">First Name</label>
-          <input type="text" class="form-control is-valid" id="name" placeholder="Ricky" required>
-        </div>
-
-        <div class="col-md-6 mb-3">
-          <label for="lastname">Last Name</label>
-          <input type="text" class="form-control is-valid" id="lastname" placeholder="Bobby" required>
-        </div>
-
-      </div>
-
-    <br>
-
-      <div class="row">
-
-        <div class="col-md-6 mb-3">
-          <label for="email">Email</label>
-          <input type="email" class="form-control is-valid" id="email" placeholder="developer@gmail.com" required data-msg-email="Please use the format: username@email.com">
-        </div>
-        
-        <div class="col-md-6 mb-3">
-          <label for="location">Location</label>
-          <input type="text" class="form-control is-valid" id="location" placeholder="Long Branch, NJ" required>
-        </div>
-
-      </div>
-
-    <br>
-
-    <div class="row">
-      <div class="col-md-6 mb-3">
-        <label for="password">Password (must be at least 6 characters)</label>
-        <input type="password" class="form-control is-valid" id="password" placeholder="New Password" required data-rule-minlength="6">
-      </div>
-    </div>
-
-    <br>
-
-    <div class="row">
-      <div class="col-md-12 mb-3">
-        <label for="skills">Skills</label>
-            <textarea type="text" class="form-control is-valid" id="skills" placeholder="My Skills" required style="width:500px;height:150px"></textarea>
-      </div>
-    </div>
-
-    <br>
-
-      <div class="row">
-        <div class="col-md-6 mb-3">
-           <button class="btn btn-primary" id="reg-form-btn" type="submit" style="background-color:#708090;width:80px;height:40px;color:white">Submit</button>
-        </div>
-      </div>
+      <li class="nav-item">
+        <a class="nav-link" href="jobposts.html">Job Listings</a>
+      </li>
     
-    <br>
-    </form>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Become a Member
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="register.html">Member Registration</a>
+          <a class="dropdown-item" href="login.html">Login</a>
+        </div>
+      </li>
 
-  </div> <!-- end container -->
+      <li class="nav-item">
+        <button type="button" class="btn btn-default btn-sm" id="sign-out-btn" style="margin-top: 10px">
+        <a class="glyphicon glyphicon-log-out" href="index.html">Log out</a>
+        </button>
+      </li>
 
+    </ul>
+  </div>
+</nav>
+<!--End navbar-->   
 
-   <div class="row">
-    <div class="bottom">
-      <div class="col-lg-12">
-      </div>  
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+      <h1>Register For Robal</h1>
+      <hr>
+    </div>
+  </div>
+<!-- Entry Form -->
+
+<form>
+
+  <div class="row">
+
+    <div class="col-md-6 mb-3">
+      <label for="name">First Name</label>
+      <input type="text" class="form-control is-valid" id="name" placeholder="Ricky" required>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <label for="lastname">Last Name</label>
+      <input type="text" class="form-control is-valid" id="lastname" placeholder="Bobby" required>
+    </div>
+
+  </div>
+
+  <br>
+
+  <div class="row">
+
+    <div class="col-md-6 mb-3">
+      <label for="email">Email</label>
+      <input type="email" class="form-control is-valid" id="email" placeholder="developer@gmail.com" required data-msg-email="Please use the format: username@email.com">
+    </div>
+    
+    <div class="col-md-6 mb-3">
+      <label for="location">Location</label>
+      <input type="text" class="form-control is-valid" id="location" placeholder="Long Branch, NJ" required>
+    </div>
+
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label for="password">Password (must be at least 6 characters)</label>
+      <input type="password" class="form-control is-valid" id="password" placeholder="New Password" required data-rule-minlength="6">
     </div>
   </div>
 
-    <div class="row">
-    <footer>
-      <p></p>
-    </footer>
+  <br>
 
-    <script>
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <label for="skills">Skills</label>
+      <textarea type="text" class="form-control is-valid" id="skills" placeholder="My Skills" required style="width:500px;height:150px"></textarea>
+    </div>
+  </div>
 
-$(".form-control").valid();
-  // FireBase
+  <br>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+       <button class="btn btn-primary" id="reg-form-btn" type="submit" style="background-color:#708090;width:80px;height:40px;color:white">Submit</button>
+    </div>
+  </div>
+
+  <br>
+
+</form>
+
+</div> <!-- end container -->
+
+<div class="row">
+  <footer>
+    <p></p>
+  </footer>
+</div>
+
+<script>
+
+  $(".form-control").valid();
+  
   var config = {
         apiKey: "AIzaSyCRUos4srVsw2Gw6_ghM2YTUSXdm-L6kEo",
         authDomain: "robal-f2619.firebaseapp.com",
@@ -178,19 +185,22 @@ $(".form-control").valid();
         storageBucket: "robal-f2619.appspot.com",
         messagingSenderId: "1011207778959"
   };
+  
   firebase.initializeApp(config);
       
   // Storing Firebase in database
+  
   var database = firebase.database();
   var auth = firebase.auth();
   firebase.auth().onAuthStateChanged(function(user) {
-          if (user) {
-            user = user.email
-            console.log("User is signed in.")
-          } else {
-            console.log('No user is signed in.')
-          }
-        });
+    if (user) {
+      user = user.email
+      console.log("User is signed in.")
+    } else {
+      console.log('No user is signed in.')
+    }
+  });
+  
   $("#reg-form-btn").on("click", function(event) {
     event.preventDefault();
     var uid;
@@ -207,32 +217,36 @@ $(".form-control").valid();
     console.log(location);
     console.log(password);
     console.log(skills);
-    auth.createUserWithEmailAndPassword(email, password)
-        .then(function(firebaseUser) {
-            uid = firebaseUser.uid;
-            console.log("User " + firebaseUser.uid + " created successfully!");
-            register(uid);
-            return firebaseUser;
-        }).then(function(firebaseUser) {
-            console.log("Logged in as:", firebaseUser.uid);
-            window.location.href = "dashboard.html";
-        }).catch(function(error) {
-            console.error("Error: ", error);
-        }).then();
-  function register(uid){
-   var registrationInfo = {
-     id: uid,
-     name: fName,
-     lastname: lName,
-     eaddress: email,
-     area: location,
-     pword: password,
-     skills: skills,
-     hours: 5,
-     jobsAccepted: {}
-   };
+    
+  auth.createUserWithEmailAndPassword(email, password)
+    .then(function(firebaseUser) {
+        uid = firebaseUser.uid;
+        console.log("User " + firebaseUser.uid + " created successfully!");
+        register(uid);
+        return firebaseUser;
+    }).then(function(firebaseUser) {
+        console.log("Logged in as:", firebaseUser.uid);
+        window.location.href = "dashboard.html";
+    }).catch(function(error) {
+        console.error("Error: ", error);
+    }).then();
+  
+    function register(uid){
+     var registrationInfo = {
+       id: uid,
+       name: fName,
+       lastname: lName,
+       eaddress: email,
+       area: location,
+       pword: password,
+       skills: skills,
+       hours: 5,
+       jobsAccepted: {}
+    };
+
     database.ref('/registration').push(registrationInfo);
-  };
+    };
+  
     $("#name").val("");
     $("#lastname").val("");
     $("#email").val("");
@@ -240,15 +254,15 @@ $(".form-control").valid();
     $("#password").val("");
     $("#skills").val("");
   });
+  
   $("#sign-out-btn" ).on("click", function(event) {
-          firebase.auth().signOut().then(function() {
-          // Sign-out successful.
-          }).catch(function(error) {
-          // An error happened.
-          });
-        });
-  </script>
-  </div>
+    firebase.auth().signOut().then(function() {
+    // Sign-out successful.
+    }).catch(function(error) {
+    // An error happened.
+    });
+  });
 
+</script>
 </body>
 </html>
