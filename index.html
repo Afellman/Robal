@@ -1,30 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
-  <head>
-
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Robal Home Page</title>
-
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
- <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<link href="https://fonts.googleapis.com/css?family=Vollkorn+SC" rel="stylesheet">
-
-
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Dashboard</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="./assets/css/post.css">
+        <link rel="icon" href="./assets/images/favicon.png">
+        <link href="https://fonts.googleapis.com/css?family=Vollkorn+SC" rel="stylesheet">
+        <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-database.js"></script>
+      </head>
  <style>
 
 
@@ -32,10 +20,7 @@
   font-family: 'Vollkorn SC', serif;
 }
 
-#logo {
-  width: 90px !important;
-  height: 90px !important;
-}
+
 
  .container-fluid  {
 
@@ -47,7 +32,6 @@
     height: 800px;
 }
 
-}
 
 .home-btns {
   
@@ -59,6 +43,9 @@
 
   a { 
     color: white !important;
+  }
+  a:hover{
+    text-decoration: none;
   }
  .btn {
    border-radius: 20px;
@@ -72,7 +59,7 @@
 }
       
   #mission-statement {
-    margin-top: 200px;
+    margin-top: 150px;
     padding: right, left;
     border: 1px solid black;
     color: white;
@@ -83,11 +70,11 @@
 
   }
 
-  #learn-more {
-    padding: 10px;
-    font-size: 20px;
-    background: grey;
-    border-radius: 10px;
+ 
+  #logo {
+    padding: 0;
+    width: 90px !important;
+    height: 90px !important;
   }
 body, html, .main {
     height: 100%;
@@ -105,16 +92,8 @@ section {
  header {
   background-color: gray 
  }
+
  </style>
-
-</head>
-  
-
- 
-<!-- Navigation -->
-    
-
-<html>
 <body>
   <header class="text-center">
       <img id= "logo" src="assets/images/rlogo_orange.png" alt="Smiley face">
@@ -127,13 +106,13 @@ section {
 <div class="container-fluid">
 <div class="row">
   <div class="home-btns col-md-3">
-    <button type="button" class="btn btn-primary "> <a href= 'login.html' class='headernavlink'>Login</a></button>
-    <button type="button" class="btn btn-primary "><a href= 'register.html' class='headernavlink'>Register</a></button>
+      <a href= './login.html' class='headernavlink'> <button type="button" class="btn btn-primary ">Login</button></a>
+      <a href= './register.html' class='headernavlink'> <button type="button" class="btn btn-primary ">Register</button></a>
   </div>
 </div>
 <div class="row">
   <div class="col-md-2 moar">
-  <a id="learn-more" href="#section2">Learn More</a> </div>
+  <a id="learn-more" href="#section2"><button class="btn btn-info">Learn More</button></a> 
   </div>
 </div>
 
@@ -147,41 +126,34 @@ section {
   </div>
 
 </body>
-</html>
 
-  
+<script
+src="https://code.jquery.com/jquery-3.2.1.js"
+integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+crossorigin="anonymous"></script>
+<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzTLxC73DXyLzgblZUBKMdM4_LJgnKmKY&callback=initMap"
+async defer></script>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 
 <script>
     $(document).ready(function(){
       // Add smooth scrolling to all links
-      $("#learn-more").on('click', function(event) {
-    
-        // Make sure this.hash has a value before overriding default behavior
-        if (this.hash !== "") {
-          // Prevent default anchor click behavior
-          event.preventDefault();
-    
-          // Store hash
-          var hash = this.hash;
-    
-          // Using jQuery's animate() method to add smooth page scroll
-          // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-          $('html, body').animate({
-            scrollTop: $(hash).offset().top
-          }, 1000000, function(){
-       
-            // Add hash (#) to URL when done scrolling (default click behavior)
-            window.location.hash = hash;
-          });
-        } // End if
-      });
+      $("#learn-more").click(function() {
+        $('html, body').animate({
+            scrollTop: $("#section2").offset().top
+        }, 2000);
+    });
     });
     
     </script>
-  <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
+
  
 </html>
 
