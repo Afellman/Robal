@@ -151,7 +151,7 @@ crossorigin="anonymous"></script>
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
   crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 
 
 <script>
@@ -173,19 +173,19 @@ crossorigin="anonymous"></script>
             scrollTop: $("#section2").offset().top
         }, 2000);
       });
-      });
-    
-     // Checking if signed in and assigning unique user id locally
+           // Checking if signed in and assigning unique user id locally
      firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
           console.log(user.email)
-          userEmail = user.email
           console.log("User is signed in.")
           console.log(userEmail)
         } else {
           console.log('No user is signed in.')
         }
       });
+      });
+    
+
     </script>
 
  
