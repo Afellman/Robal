@@ -92,12 +92,12 @@
 
         <div class="col-md-6 mb-3">
           <label for="name">First Name</label>
-          <input type="text" class="form-control is-valid" id="name" placeholder="Ricky" value="" required>
+          <input type="text" class="form-control is-valid" id="name" placeholder="Ricky" required>
         </div>
 
         <div class="col-md-6 mb-3">
           <label for="lastname">Last Name</label>
-          <input type="text" class="form-control is-valid" id="lastname" placeholder="Bobby" value="" required>
+          <input type="text" class="form-control is-valid" id="lastname" placeholder="Bobby" required>
         </div>
 
       </div>
@@ -108,12 +108,12 @@
 
         <div class="col-md-6 mb-3">
           <label for="email">Email</label>
-          <input type="email" class="form-control is-valid" id="email" placeholder="developer@gmail.com" value="" required>
+          <input type="email" class="form-control is-valid" id="email" placeholder="developer@gmail.com" required>
         </div>
         
         <div class="col-md-6 mb-3">
           <label for="location">Location</label>
-          <input type="text" class="form-control is-valid" id="location" placeholder="Long Branch, NJ" value="" required>
+          <input type="text" class="form-control is-valid" id="location" placeholder="Long Branch, NJ" required>
         </div>
 
       </div>
@@ -123,7 +123,7 @@
     <div class="row">
       <div class="col-md-6 mb-3">
         <label for="password">Password</label>
-        <input type="password" class="form-control is-valid" id="password" placeholder="New Password" value="" required>
+        <input type="password" class="form-control is-valid" id="password" placeholder="New Password" required>
       </div>
     </div>
 
@@ -132,7 +132,7 @@
     <div class="row">
       <div class="col-md-12 mb-3">
         <label for="skills">Skills</label>
-            <textarea type="text" class="form-control is-valid" id="skills" placeholder="My Skills" value="" required style="width:500px;height:150px"></textarea>
+            <textarea type="text" class="form-control is-valid" id="skills" placeholder="My Skills" required style="width:500px;height:150px"></textarea>
       </div>
     </div>
 
@@ -167,71 +167,41 @@
 
     <script>
 
-$("#reg-form-btn").prop('disabled', true); // diables the submit button
-
-$(':text' && ':password').on('input change', function () { // enables submit button when every field is not empty
-  $(':text' && ':password' && '#skills').each(function () {
-    if ($(this).val() != '') {
-      $('#reg-form-btn').prop('disabled', false);
-      // return false;
-    }
-    else {
-      $('#reg-form-btn').prop('disabled', true);
-    }
-  });
-});
+$("#reg-form-btn").prop('disabled', false); // diables the submit button when set to 'true'
+var isValid = 0;
+// $(".form-control").on('input change', function () { // enables submit button when every field is not empty
+//   $(".form-control" && '#skills').each(function () {
+//     if ($(this).val() != '') {
+//       $('#reg-form-btn').prop('disabled', false);
+//       // return false;
+//     }
+//     else {
+//       $('#reg-form-btn').prop('disabled', true);
+//     }
+//   });
+// });
 
 
 $("#reg-form").validate();
 
 
 
-
-// $(function() {
-//   // Initialize form validation on the registration form.
-//   // It has the name attribute "registration"
-//   $("#reg-form").validate({
-//     // Specify validation rules
-//     rules: {
-//       // The key name on the left side is the name attribute
-//       // of an input field. Validation rules are defined
-//       // on the right side
-//       name: "required",
-//       lastname: "required",
-//       email: {
-//         required: true,
-//         // Specify that email should be validated
-//         // by the built-in "email" rule
-//         email: true
-//       },
-//       password: {
-//         required: true,
-//         minlength: 5
-//       }
-//     },
-//     // Specify validation error messages
-//     messages: {
-//       name: "Please enter your firstname",
-//       lastname: "Please enter your lastname",
-//       password: {
-//         required: "Please provide a password",
-//         minlength: "Your password must be at least 5 characters long"
-//       },
-//       email: "Please enter a valid email address"
-//     },
-//     // Make sure the form is submitted to the destination defined
-//     // in the "action" attribute of the form when valid
-//     submitHandler: function(form) {
-//       form.submit();
-//     }
-//   });
-// });
-
-
 $("#validate").on("click", function(event) {
     event.preventDefault();
-    console.log("is the form valid? " + $("#reg-form").valid());
+    console.log("are the fields valid? " + $(".form-control").valid());
+    if (($(".form-control").valid()) == true) {
+        isValid = 1;
+        console.log("isValid: " + isValid);
+      }
+    // console.log("is the password valid? " + $("#password").valid());
   });
+
+if (isValid === 1) {
+  $("#reg-form-btn").prop('disabled', false);
+  console.log("yes");
+}
+
+
 
 
 
