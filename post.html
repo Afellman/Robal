@@ -7,21 +7,25 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <!-- Required meta tags -->
       
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <title>Job Post Form </title>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-      <link rel="stylesheet" type="text/css" href="assets/css/post.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Vollkorn+SC" rel="stylesheet">
-  <style>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Robal | Job Post Form </title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/post.css">
+  <link href="https://fonts.googleapis.com/css?family=Vollkorn+SC" rel="stylesheet">
+  <link rel="icon" href="./assets/images/favicon.png">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-database.js"></script>
+
+</head>
+
+<style>
 
 
-.bg-primary-gradient {
-    background-color:
-}
-  .navbar-brand {
+.navbar-brand {
     font-size: 30px;
 
 }
@@ -31,36 +35,34 @@
 
 }
 
-
-
 body {
     font-family: 'Vollkorn SC', serif;
     font-size: 22px;
-    /*background-image: url("../images/cwork.jpg");*/ 
+    background-image: url("./assets/images/cwork.jpg");  
     background-size: 100%;
 }
-      
-
-  </style>
-
-</head>
+   
   
- <body>
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+</style>
+
+
+  
+<body>
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <a class="navbar-brand" href="#">Robal</a>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="index.html">Home<span class="sr-only"></span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="dashboard.html">Dashboard</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Job Post Form</a>
+      <li class="nav-item active">
+        <a class="nav-link" href="post.html">Post a Job</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="jobposts.html">Job Listings</a>
@@ -71,9 +73,15 @@ body {
          Become a Member
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Member Registration</a>
+          <a class="dropdown-item" href="register.html">Member Registration</a>
           <a class="dropdown-item" href="login.html">Login</a>
         </div>
+
+
+     <li class="nav-item">
+         <button type="button" class="btn btn-default btn-sm" id="sign-out-btn" style="margin-top: 10px">
+          <a class="glyphicon glyphicon-log-out" href="index.html">Log out</a>
+       </button>
       </li>
     </ul>
   </div>
@@ -82,31 +90,30 @@ body {
 
 <br>
 
-<div class="container">
+  <div class="container">
     <div class="row">
         <div class="col-md-9">
         <h1>Job Post Entry Form</h1>
         <hr>
     </div>
-  
   </div>
 <!-- Entry Form -->
 
 <form>
-   <div class="row">
+ <div class="row">
     <div class="col-md-6 mb-3">
       <label for="name-input">First Name</label>
       <input type="text" class="form-control is-valid" id="name-input" placeholder="Ricky" value="" required="">
     </div>
-    <div class="col-md-6 mb-3">
+  <div class="col-md-6 mb-3">
       <label for="last-name-input">Last Name</label>
       <input type="text" class="form-control is-valid" id="last-name-input" placeholder="Bobby" value="" required="">
- </div>
+  </div>
 </div>
 
 <br>
 
-   <div class="row">
+  <div class="row">
     <div class="col-md-6 mb-3">
       <label for="email-input">Email</label>
       <input type="text" class="form-control is-valid" id="email-input" placeholder="developer@gmail.com" value="" required="">
@@ -114,51 +121,43 @@ body {
     <div class="col-md-6 mb-3">
       <label for="location-input">Location</label>
       <input type="text" class="form-control is-valid" id="location-input" placeholder="Long Branch, NJ" value="" required="">
- </div>
-</div>
+    </div>
+  </div>
 
 <br>
 
- <div class="row">
+  <div class="row">
     <div class="col-md-6 mb-3">
       <label for="hours-input">Hours Needed</label>
-      <input type="text" class="form-control is-valid" id="hours-input" placeholder="Two Hours" value="" required="">
+      <input type="number" class="form-control is-valid" id="hours-input" placeholder="3" value="" required="">
     </div>
     <div class="col-md-6 mb-3">
       <label for="job-input">Job Title</label>
       <input type="text" class="form-control is-valid" id="job-input" placeholder="Painter" value="" required="">
- </div>
-</div>
+    </div>
+  </div>
 
 <br>
 
-<div class="row">
+  <div class="row">
     <div class="col-md-6 mb-3">
       <label for="work-needed-input">Work needed description</label>
-      <input type="text" class="form-control is-valid" id="work-needed-input" value="" required="" style="width:540px;height:250px">
+      <textarea type="text" class="form-control is-valid" id="work-needed-input" value="" required="" style="width:540px;height:250px"></textarea>
       <br><br>
        <button class="btn btn-primary" id="add-form-btn" type="submit" style="background-color:#708090;width:80px;height:40px;color:white">Submit</button>
-
-      
     </div>
-</div>
+  </div>
 </form>
 
   </div>
-<!-- </div> -->
-
-
- <div class="row">
-  <div class="bottom">
-    <div class="col-lg-12">
-    </div>  
-  </div>
 </div>
 
+
   <div class="row">
-  <footer>
-    <p> </p>
-  </footer>
+    <footer>
+      <p> </p>
+    </footer>
+  </div>
 
   <script>
 
@@ -208,7 +207,14 @@ body {
 
     };
 
+
+    window.location.href = "dashboard.html" 
+
     database.ref('/jobPost').push(newJobPost);
+
+
+    
+
 
     $("#name-input").val("");
     $("#last-name-input").val("");
@@ -220,10 +226,28 @@ body {
 
     });
 
+   $("#sign-out-btn" ).on("click", function(event) {
 
+   firebase.auth().signOut().then(function() {
+  // Sign-out successful.
+  }).catch(function(error) {
+  // An error happened.
+  });
 
-  </script>
-</div>
+});
 
+firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            user = user.email
+            console.log("User is signed in.")
+            populateWithUserData(user);
 
-</body></html>
+         } else {
+            console.log('No user is signed in.')
+    
+          }
+      });
+
+  </script>  
+ </body>
+</html>

@@ -6,9 +6,10 @@
 <!-- Required meta tags -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Log Into Robal </title>
+<title>Robal | Login</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="assets/css/post.css">
+<link rel="icon" href="./assets/images/favicon.png">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
@@ -17,17 +18,18 @@
 <link href="https://fonts.googleapis.com/css?family=Vollkorn+SC" rel="stylesheet">
 
 <style>
-
+  label.error {
+    color: red;
+    font-size: 12px;
+  }
 .navbar-brand {
     font-size: 30px;
-
 }
 .container {
   font-size: 20px;
-
 }
-
 body {
+  background: url('./assets/images/cwork.jpg') !important;
     font-family: 'Vollkorn SC', serif;
     font-size: 22px; 
     background-size: 100%;
@@ -54,13 +56,13 @@ body {
           <a class="nav-link" href="dashboard.html">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="post.html">Job Post Form</a>
+          <a class="nav-link" href="post.html">Post a Job</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="jobposts.html">Job Listings</a>
         </li>
       
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown active">
           <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            Become a Member
           </a>
@@ -69,7 +71,11 @@ body {
             <a class="dropdown-item" href="login.html">Login</a>
           </div>
         </li>
-
+        <li class="nav-item">
+            <button type="button" class="btn btn-default btn-sm" id="sign-out-btn" style="margin-top: 10px">
+              <a class="glyphicon glyphicon-log-out" href="index.html">Log out</a>
+           </button>
+          </li>
       </ul>
     </div>
     
@@ -91,14 +97,14 @@ body {
    <div class="row">
     <div class="col-md-6 mb-3">
       <label for="email-login-input">Email</label>
-      <input type="email" class="form-control is-valid" id="email-login-input" placeholder="developer@gmail.com" value="" required="">
+      <input type="email" class="form-control is-valid" id="email-login-input" placeholder="developer@gmail.com" required data-msg-email="Please use the format: username@email.com">
     </div>
 </div>
 <br>
  <div class="row">
     <div class="col-md-6 mb-3">
       <label for="password-input">Password (must be at least 6 characters)</label>
-      <input type="password" class="form-control is-valid" id="password-input" placeholder="Your Password" value="" required="">
+      <input type="password" class="form-control is-valid" id="password-input" placeholder="New Password" required data-rule-minlength="6">
     </div>
 </div>
 
@@ -136,11 +142,7 @@ body {
 
   <script>
 
-$("#add-form-btn").prop('disabled', false); // diables the submit button when set to 'true'
-$("#add-form").validate();
-if (($(".form-control").valid()) == true) {
-    $("#add-form-btn").prop('disabled', false);
-}
+$(".form-control").valid();
 
 var config = {
   apiKey: "AIzaSyCRUos4srVsw2Gw6_ghM2YTUSXdm-L6kEo",
@@ -151,21 +153,24 @@ var config = {
   messagingSenderId: "1011207778959"
 };
 firebase.initializeApp(config);
-
 // Storing Firebase in database
 var database = firebase.database();
 var auth = firebase.auth();
+firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            user = user.email
+            console.log("User is signed in.")
 
+          } else {
+            console.log('No user is signed in.')
+          }
+        });
 $("#add-form-btn").on("click", function(event) {
   event.preventDefault();
-
-  var email = $("#email-login-input").val().trim();
-  var password = $("#password-input").val().trim();
-
+  var email = $("#email-login-input").val();
+  var password = $("#password-input").val();
   console.log(email);
   console.log(password);
-
-
   auth.signInWithEmailAndPassword(email, password)
         .then(function(firebaseUser) {
             uid = firebaseUser.uid;
@@ -179,12 +184,18 @@ $("#add-form-btn").on("click", function(event) {
             $('#loginFail1').text("Login failed.")
             $('#loginFail2').text("Check your email and password, or register an account at our Member Registration page.")
         }).then();
-
   $("#email-login-input").val("");
   $("#password-input").val("");
+
 });
 
-
+$("#sign-out-btn" ).on("click", function(event) {
+          firebase.auth().signOut().then(function() {
+          // Sign-out successful.
+          }).catch(function(error) {
+          // An error happened.
+          });
+        });
 
 </script>
 </div>
@@ -192,4 +203,3 @@ $("#add-form-btn").on("click", function(event) {
 
 </body>
 </html>
-

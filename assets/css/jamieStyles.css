@@ -1,3 +1,24 @@
+/* Alexis CSS*/
+
+.bg-primary-gradient {
+    background-color:
+}
+  .navbar-brand {
+    font-size: 30px !important;
+
+}
+.container {
+  background-color:;
+  font-size: 20px;
+
+}
+
+* {
+   font-family: 'Vollkorn SC', serif;
+ }
+ /* END Alexis CSS*/
+
+
 .navbar-fixed-left{
 	width: 180px;
 	position: fixed;
@@ -13,10 +34,10 @@ li{
 	text-align: center;
 }
 
-.navbar .navbar-brand-wrapper .navbar-brand img {
-    max-width: 100%;
-    width: 100%;
-    margin-top: auto;
+.myimg {
+    /*max-width: 10px;*/
+    width: 15px
+   
 }
 
 .tile{
@@ -30,9 +51,15 @@ li{
 }
 
 .tile-block{
+	/*text-decoration: underline;*/
+	background-color: #e6e6e633;
 	flex: 1 1 auto;
 	padding: 4px;
 
+}
+
+.sub-block{
+	padding: 5px;
 }
 
 .mb-4{
