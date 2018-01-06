@@ -14,15 +14,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-database.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Vollkorn+SC" rel="stylesheet">
 
+</head>
+
 <style>
-
-
-.bg-primary-gradient {
-    background-color:;
-
-}
 
 .navbar-brand {
     font-size: 30px;
@@ -31,6 +30,8 @@
 .container {
   background-color:;
   font-size: 20px;
+  background-image: url("./assets/images/cwork.jpg");  
+  background-size: 100%;
 
 }
 
@@ -42,7 +43,7 @@ body {
 }
       
 </style>
-</head>
+
   
 <body>
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
@@ -52,7 +53,7 @@ body {
   <a class="navbar-brand" href="#">Robal</a>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="index.html">Home<span class="sr-only"></span></a>
       </li>
       <li class="nav-item">
@@ -65,14 +66,19 @@ body {
         <a class="nav-link" href="jobposts.html">Job Listings</a>
       </li>
     
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown active">
         <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          Become a Member
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Member Registration</a>
+          <a class="dropdown-item" href="register.html">Member Registration</a>
           <a class="dropdown-item" href="login.html">Login</a>
         </div>
+
+      <li class="nav-item">
+         <button type="button" class="btn btn-default btn-sm" id="sign-out-btn" style="margin-top: 10px">
+          <a class="glyphicon glyphicon-log-out" href="index.html">Log out</a>
+       </button>
       </li>
     </ul>
   </div>
@@ -89,13 +95,11 @@ body {
         <h1>Login</h1>
         <hr>
     </div>
-  
   </div>
 <!-- Entry Form -->
 
 <form>
-
-   <div class="row">
+  <div class="row">
     <div class="col-md-6 mb-3">
       <label for="email-login-input">Email</label>
       <input type="text" class="form-control is-valid" id="email-login-input" placeholder="developer@gmail.com" value="" required="">
@@ -113,7 +117,7 @@ body {
 <br>
 <div class="row">
     <div class="col-md-6 mb-3">
-       <button class="btn btn-primary" id="add-form-btn" type="submit" style="background-color:#708090;width:80px;height:40px;color:white">Submit</button>
+       <button type="button" class="btn btn-primary"  id="add-form-btn" type="submit" style="background-color:#708090;width:80px;height:40px;color:white">Submit</button>
     </div>
 </div>
 
@@ -157,8 +161,16 @@ var database = firebase.database();
 $("#add-form-btn").on("click", function(event) {
 event.preventDefault();
 
+
 var email = $("#email-login-input").val().trim();
 var password = $("#password-input").val().trim();
+
+firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // ...
+});
 
 
 console.log(email);
@@ -171,15 +183,22 @@ var loginInfo = {
 eaddress: email,
 pword: password,
 
+
 };
 
 database.ref('/login').push(loginInfo);
 
 
+window.location.href = "dashboard.html" 
+
 $("#email-login-input").val("");
 $("#password-input").val("");
 
+
 });
+
+
+
 
 
 
