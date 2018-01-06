@@ -5,11 +5,11 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Job Posts</title>
+  <title>Job Listings</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="css/post.css">
-  <link rel="stylesheet" href="./assets/css/style.css" /> 
+  <link rel="stylesheet" type="text/css" href="./assets/css/post.css">
   <link href="https://fonts.googleapis.com/css?family=Vollkorn+SC" rel="stylesheet">
+  <link rel="icon" href="./assets/images/favicon.png">
 </head>
 <style>
 
@@ -63,39 +63,39 @@
 
 </style>
 <body>
-    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="#">Robal</a>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home<span class="sr-only"></span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="dashboard.html">Dashboard</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="post.html">Job Post Form</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="jobposts.html">Job Listings</a>
-            </li>
-          
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Become a Member
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="register.html">Member Registration</a>
-                <a class="dropdown-item" href="login.html">Login</a>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    <!--End navbar-->   
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">Robal</a>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home<span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dashboard.html">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="post.html">Job Post Form</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link active" href="jobposts.html">Job Listings</a>
+          </li>
+        
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Become a Member
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="register.html">Member Registration</a>
+              <a class="dropdown-item" href="login.html">Login</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  <!--End navbar-->   
   <div class="content-wrapper">
     <div class="container" id="jobs-container">
       <div class="row">
@@ -112,41 +112,41 @@
   </div>
   <!-- Google maps MODAL -->
   <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-      <div class="modal-content">
-          <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-          </button>
-          </div>
-          <div class="modal-body">
-            <div id="map">
-            </div>
-          </div>
-          <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-      </div>
-      </div>
-  </div>
-  <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Contact</h4>
-          </div>
-          <div class="modal-body">
-            <p>Send a message to the Job Poster letting them know you are interested</p>
-            <p class="subtle">include your email/phone number</p>
-            <input class="form-control" type="text" id='contact-msg'>
-          </div>
-          <div class="modal-footer">
-            <button type="button" id="contact-btn" data-dismiss="modal" class="btn btn-primary">Submit</button>
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+          <div id="map">
           </div>
         </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+    </div>
+  </div>
+  <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Contact</h4>
+        </div>
+        <div class="modal-body">
+          <p>Send a message to the Job Poster letting them know you are interested</p>
+          <p class="subtle">include your email/phone number</p>
+          <input class="form-control" type="text" id='contact-msg'>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="contact-btn" data-dismiss="modal" class="btn btn-primary">Submit</button>
+        </div>
       </div>
+    </div>
     </div>
     <script
     src="https://code.jquery.com/jquery-3.2.1.js"
@@ -202,7 +202,6 @@
           console.log(userEmail)
         } else {
           console.log('No user is signed in.')
-          alert('you are not signed in');
         }
       });
 
@@ -295,7 +294,7 @@
 
 
     // Assigning receiver variable locally
-    $('.contact-modal-btn').on('click', function() {
+    $(document).on('click', '.contact-modal-btn', function() {
       console.log('modal')
       receiver = $(this).attr('data-email')
       console.log(receiver)
