@@ -6,16 +6,25 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Job Posts</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-  <link rel="stylesheet" href="./assets/css/style.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/post.css">
+  <link rel="stylesheet" href="./assets/css/style.css" /> 
   <link href="https://fonts.googleapis.com/css?family=Vollkorn+SC" rel="stylesheet">
 </head>
 <style>
 
+  .container {
+    background: none;
+  }
   * {
     font-family: 'Vollkorn SC', serif;
   }
-  
+
+  .navbar-brand {
+    font-size: 30px;
+
+  }
+
   #job-title {
     border-bottom: 1px solid grey;
     display: inline-block;
@@ -47,21 +56,56 @@
 
   #jobs-container {
     max-width: 960px;
-    padding: 20px 50px 20px 50px
+    padding: 20px 50px 20px 50px;
+    background: #F7F7F9;
   }
 
 
 </style>
 <body>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">Robal</a>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home<span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="dashboard.html">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="post.html">Job Post Form</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="jobposts.html">Job Listings</a>
+            </li>
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Become a Member
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="register.html">Member Registration</a>
+                <a class="dropdown-item" href="login.html">Login</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <!--End navbar-->   
   <div class="content-wrapper">
     <div class="container" id="jobs-container">
       <div class="row">
         <header id="job-list-header" class="d-flex w-100">
-         <h3 class="text-primary mb-4">Job List</h3>
+         <h3 class="text-primary mb-4">Job Listings</h3>
+         <hr>
         </header>
       </div>
       <div class="row mb-4">
-        <div id="job-list-container" class="bg-light col-lg-12">
+        <div id="job-list-container" class=" col-lg-12">
         </div>
       </div>
     </div>
@@ -86,37 +130,36 @@
       </div>
       </div>
   </div>
-  <!-- Conact Modal -->
   <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Contact</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>Send a message to the Job Poster!</p>
-          <p class="subtle">include your email/phone number</p>
-          <input class="form-control" type="text" id='contact-msg'>
-        </div>
-        <div class="modal-footer">
-          <button type="button" id="contact-btn" class="btn btn-primary" data-dismiss="modal">Submit</button>
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Contact</h4>
+          </div>
+          <div class="modal-body">
+            <p>Send a message to the Job Poster letting them know you are interested</p>
+            <p class="subtle">include your email/phone number</p>
+            <input class="form-control" type="text" id='contact-msg'>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="contact-btn" data-dismiss="modal" class="btn btn-primary">Submit</button>
+          </div>
         </div>
       </div>
-    </div>
     </div>
     <script
     src="https://code.jquery.com/jquery-3.2.1.js"
     integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
     crossorigin="anonymous"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-database.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzTLxC73DXyLzgblZUBKMdM4_LJgnKmKY&callback=initMap"
   async defer></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     <script>
 			// Initializing Firebase
@@ -131,10 +174,14 @@
 			firebase.initializeApp(config);
 
        // Initializing variables
+      
+      var database = firebase.database();
+      var auth = firebase.auth()
       var jobLocation;
-			var database = firebase.database();
 			var jobPostArray = [];
       var mapLocation;
+      var userEmail;
+      var receiver;
 			// Function turning snapshop into an Array
 			function snapshotToArray(snapshot) {
 				var returnArr = [];
@@ -145,6 +192,20 @@
 					});
 				return returnArr;
 			};
+
+      // Checking if signed in and assigning unique user id locally
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          console.log(user.email)
+          userEmail = user.email
+          console.log("User is signed in.")
+          console.log(userEmail)
+        } else {
+          console.log('No user is signed in.')
+          alert('you are not signed in');
+        }
+      });
+
 
 			// Gathering data of job posts from Firebase
 			database.ref("/jobPost").on('value', function(snapshot) {
@@ -161,9 +222,9 @@
 					var description = jobPostArray[i].need;
 					var title = jobPostArray[i].work;
           // Appeding everything to the DOM
-          var contact = '<button type="button" class="job-btn btn btn-primary" data-toggle="modal" data-target="#contactModal">Contact</button>'
+          var contact = '<button type="button" class="btn btn-primary contact-modal-btn" data-email="'+email+'" data-toggle="modal" data-target="#contactModal">Contact</button>'
           var container = '<div id="job-list-item"class="mt-3"></div>';
-          var title =  '<div class="row title-row"></div><div class="col-md-12"><h3 id="job-title">' + title + '</h3></div></div>';
+          var title =  '<div class="row title-row"><div class="col-md-12"><h3 id="job-title">' + title + '</h3></div></div>';
           var mapButton = '<button type="button" class="job-btn btn btn-primary map-btn" data-toggle="modal" data-loc="'+ location +'" data-target="#mapModal">Map</button>';
           var jobSpec = '<div class="ml-2 row"><div class="col-md-12"><p class="subtle">Employeer is: ' + fname + " " + lname +' - ' + email + ' <br>'+ hours +' hours at ' + location + '</p>' +'<p id="job-description">'+ description + '</p></div></div>';
           $('#job-list-container').prepend(container);
@@ -233,12 +294,22 @@
     // ---------------------------
 
 
-    
+    // Assigning receiver variable locally
+    $('.contact-modal-btn').on('click', function() {
+      console.log('modal')
+      receiver = $(this).attr('data-email')
+      console.log(receiver)
+    });
     // Pushing job accept message to firebase
 
-    $('#contact-btn').on('click', function () {
+    $('#contact-btn').on('click', function (e) {
       var jobAcceptMsg = $('#contact-msg').val();
-      database.ref('/jobAcceptMsg').push(jobAcceptMsg);
+      var msgObj = {
+        from : userEmail,
+        to : receiver,
+        msg : jobAcceptMsg
+      };
+      database.ref('/jobAcceptMsg').push(msgObj);
     });
 
   </script>
