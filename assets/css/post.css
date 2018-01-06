@@ -1,10 +1,18 @@
+body {
+    font-family: 'Vollkorn SC', serif;
+    font-size: 22px;
+    background-size: 100%;
+}
+
 .container {
   position: relative;
   background-image: url("../images/cwork.jpg");
   margin-left: auto;
   margin-right: auto;
   padding-right: 15px;
-  padding-left: 15px; }
+  padding-left: 15px;
+  font-size: 20px; }
+
   @media (min-width: 576px) {
     .container {
       padding-right: 15px;
@@ -88,6 +96,10 @@ nav {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none; }
+.navbar-brand {
+    font-size: 30px;
+
+}
 
 .nav-link {
   display: block;
