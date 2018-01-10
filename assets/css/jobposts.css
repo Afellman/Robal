@@ -1,0 +1,65 @@
+body {
+    font-family: 'Vollkorn SC', serif;
+    font-size: 22px;
+    background-size: 100%;
+}
+
+  .navbar-brand {
+      font-size: 30px;
+  }
+body {
+  background: url('../images/cwork.jpg') !important;
+}
+.container {
+  border-radius: 10px;
+  background: rgb(255, 253, 248) !important;
+}
+#job-list-item  * {
+  color: black;
+} 
+
+#job-list-item  .btn {
+  color: white;
+}
+
+
+.navbar-brand {
+  font-size: 30px;
+
+}
+
+#job-title {
+  border-bottom: 1px solid grey;
+  display: inline-block;
+}
+
+.subtle {
+  color: #656565;
+}
+
+#job-search {
+  margin-right: .5rem;
+}
+
+#new-post {
+  margin-left: 3rem;
+}
+
+#map {
+  height: 400px;
+}
+
+.job-line {
+  margin: 10px 30px 30px 30px;
+}
+
+.job-btn {
+  margin: 10px;
+}
+
+#jobs-container {
+  max-width: 960px;
+  padding: 20px 50px 20px 50px;
+  background: #F7F7F9;
+}
+

@@ -1,0 +1,16 @@
+
+  label.error {
+      color: red;
+      font-size: 12px;
+  }
+
+  .navbar-brand {
+      font-size: 30px;
+  }
+body {
+  background: url('../images/cwork.jpg') !important;
+}
+.container {
+  border-radius: 10px;
+  background: rgb(255, 255, 255) !important;
+}

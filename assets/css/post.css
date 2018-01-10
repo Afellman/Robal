@@ -4,6 +4,22 @@ body {
     background-size: 100%;
 }
 
+
+  label.error {
+      color: red;
+      font-size: 12px;
+  }
+
+  .navbar-brand {
+      font-size: 30px !important;
+  }
+body {
+  background: url('../images/cwork.jpg') !important;
+}
+.container {
+  border-radius: 10px;
+  background: rgb(255, 253, 248) !important;
+}
 .container {
   position: relative;
   background-image: url("../images/cwork.jpg");
